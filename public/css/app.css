@@ -1,22 +1,13 @@
-.part {
-  width: 100%;
-  height: 70px;
+body {
+  background: #fcfeff;
+  color: #2e2e2e;
 }
 
-.main {
-  width: 100%;
-  height: 200px;
-}
-
-.brown {
-  background: #ffcd96;
-}
-
-.green {
-  background: #61b873;
-}
-
-.pink {
-  background: #f77ea6;
+h1 {
+  font-size: 50px;
+  line-height: 1.3;
+  letter-spacing: -0.08em;
+  color: #ffcd96;
+  font-family: "Kaisei HarunoUmi", serif;
 }
 
