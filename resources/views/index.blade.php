@@ -5,7 +5,7 @@
 
 @section('content')
 <header class="header">
-  <h1 class="header-logo">コーティー<br>パーティー</h1>
+  <h1 class="header-logo"><a href="{{route('index')}}">コーティー<br>パーティー</a></h1>
 
   <nav class="nav-menu">
     <ul class="menu">
