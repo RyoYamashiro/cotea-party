@@ -4,8 +4,12 @@
 @section('title', 'Hello world!')
 
 @section('content')
+<div class="wrapper">
   @include('parts.header')
-  @include('parts.article')
-  @include('parts.footer')
+  <main class="main">
+    @include('parts.article')
 
+  </main>
+  @include('parts.footer')
+</div>
 @endsection
