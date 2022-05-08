@@ -1,13 +1,43 @@
 //
 
+$breakpoints: (
+  'sm': 'screen and (max-width: 414px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1000px)',
+  'xl': 'screen and (max-width: 1200px)',
+) !default;
+
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
 
 
-
-$base-color: #ffcd96;
+$base-color: #f7cd8f;
 $base-font-color: #2e2e2e;
 $main-color: #fcfeff;
 $sub-color: #61b873;
 $accent-color: #f77ea6;
+$theme-font: 'Kaisei HarunoUmi', serif;
+
+
+$site-width: 980px;
+
+$font-size_s: 12px;
+$font-size_m: 14px;
+$font-size_default: 16px;
+$font-size_l: 18px;
+$font-size_xl: 24px;
+$font-size_xxl: 30px;
+$font-size_3l: 38px;
+
+$space_s: 5px;
+$space_m: 10px;
+$space_l: 15px;
+$space_xl: 20px;
+$space_xxl: 30px;
+$space_3l: 40px;
 
 
 body{
@@ -17,10 +47,34 @@ body{
 }
 
 
-h1{
-  font-size: 50px;
-  line-height: 1.3;
-  letter-spacing: -0.08em;
-  color: $base-color;
-  font-family: 'Kaisei HarunoUmi', serif;
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: $space_xl;
+  padding-right: $space_xl;
+  position: fixed;
+  transition: .3s;
+  z-index: 2;
+  &.float-active {
+    transition: .3s;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  @include mq() {
+    height: 60px;
+    padding-right: $space_l;
+    padding-left: $space_l;
+  }
+  &-logo{
+    font-size: 45px;
+    line-height: 1.3;
+    letter-spacing: -0.08em;
+    color: $base-color;
+    font-family: $theme-font;
+  }
+
 }

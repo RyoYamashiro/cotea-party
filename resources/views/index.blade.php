@@ -4,18 +4,26 @@
 @section('title', 'Hello world!')
 
 @section('content')
-<h1>コーティー<br>パーティー</h1>
-<br>aaaaaaaa
+<header class="header">
+  <h1 class="header-logo">コーティー<br>パーティー</h1>
 
-<br><br>
-aaaaaaaaaaaa
-
-<br><br><br>
-
-
-aaaaaaaaaaaaa
-
-
+  <nav class="nav-menu">
+    <ul class="menu">
+      <li class="menu-item">
+        <a class="menu-link" href="">新規登録</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="">ログイン</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="">マイページ</a>
+      </li>
+      <li class="menu-item">
+        <a class="menu-link" href="">投稿</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
 
 @endsection
