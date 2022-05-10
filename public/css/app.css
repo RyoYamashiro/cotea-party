@@ -26,8 +26,13 @@ a {
 }
 
 a:hover {
-  color: #61b873;
+  color: #5ebf71;
   transition: 0.3s;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
 }
 
 .wrapper {
@@ -47,11 +52,6 @@ a:hover {
   position: fixed;
   transition: 0.3s;
   z-index: 2;
-}
-
-.header.float-active {
-  transition: 0.3s;
-  background: rgba(255, 255, 255, 0.9);
 }
 
 .header-logo {
@@ -99,6 +99,60 @@ a:hover {
 .main {
   padding-top: 100px;
   height: 100vh;
+}
+
+.container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 414px) {
+  .container {
+    width: 100%;
+  }
+}
+
+.section {
+  margin-top: 20px;
+}
+
+.title {
+  padding: 15px 30px;
+  background: #fcfeff;
+  display: inline-block;
+  border-radius: 15px;
+  font-size: 32px;
+  font-family: "Kaisei HarunoUmi", serif;
+  color: #ebb97c;
+}
+
+.title-wrapper {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.article {
+  position: relative;
+  width: calc(33.3% - 30px);
+  margin-right: 30px;
+  background: #fcfeff;
+  float: left;
+  border-radius: 30px;
+}
+
+.article::before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.article-title {
+  position: absolute;
+  top: 0;
+}
+
+.article-wrapper {
+  margin-right: -30px;
 }
 
 .footer {
