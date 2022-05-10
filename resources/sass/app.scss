@@ -15,7 +15,7 @@ $breakpoints: (
 
 
 $base-color: #ebb97c;
-$base-font-color: #2e2e2e;
+$base-font-color: #5c5c5c;
 $main-color: #fcfeff;
 $sub-color: #5ebf71;
 $accent-color: #f77ea6;
@@ -130,7 +130,7 @@ img {
 
 
 .container{
-  width: $site-width;
+  width: 84%;
   margin: 0 auto;
   @include mq(){
     width: 100%;
@@ -167,9 +167,55 @@ img {
     display: block;
     padding-top: 100%;
   }
-  &-title{
+  &-container{
     position: absolute;
     top: 0;
+    width: 100%;
+  }
+  &-title{
+    text-align: center;
+    padding: $space_m;
+    font-size: $font-size_xl;
+    font-weight: bold;
+    font-family: $theme-font;
+  }
+  &-map{
+    height: 180px;
+    background: $sub-color;
+  }
+  &-content{
+    margin: $space_l;
+  }
+  &-text{
+    min-height: 84px;
+  }
+  &-date{
+    position: absolute;
+    bottom: 0;
+    font-family: $theme-font;
+    font-size: $font-size_xl;
+  }
+  &-bottom{
+    position: relative;
+    display:flex;
+  justify-content:space-between;
+    p{
+      float: left;
+    }
+  }
+  &-button{
+    border: none;
+    background: $sub-color;
+    color: $main-color;
+    padding: $space_l;
+    border-radius: $space_l;
+    transition: .3s;
+    &:hover{
+      color: $main-color;
+      transition: .3s;
+      background: #53b567;
+      transform: translateY(-1px);
+    }
   }
   &-wrapper{
     margin-right: -$space_xxl;

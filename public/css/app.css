@@ -3,7 +3,7 @@
 html,
 body {
   width: 100%;
-  color: #2e2e2e;
+  color: #5c5c5c;
   font-size: 16px;
   background: #fcfeff;
   line-height: 1.6;
@@ -102,7 +102,7 @@ img {
 }
 
 .container {
-  width: 1280px;
+  width: 84%;
   margin: 0 auto;
 }
 
@@ -146,9 +146,64 @@ img {
   padding-top: 100%;
 }
 
-.article-title {
+.article-container {
   position: absolute;
   top: 0;
+  width: 100%;
+}
+
+.article-title {
+  text-align: center;
+  padding: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.article-map {
+  height: 180px;
+  background: #5ebf71;
+}
+
+.article-content {
+  margin: 15px;
+}
+
+.article-text {
+  min-height: 84px;
+}
+
+.article-date {
+  position: absolute;
+  bottom: 0;
+  font-family: "Kaisei HarunoUmi", serif;
+  font-size: 22px;
+}
+
+.article-bottom {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-bottom p {
+  float: left;
+}
+
+.article-button {
+  border: none;
+  background: #5ebf71;
+  color: #fcfeff;
+  padding: 15px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.article-button:hover {
+  color: #fcfeff;
+  transition: 0.3s;
+  background: #53b567;
+  transform: translateY(-1px);
 }
 
 .article-wrapper {
