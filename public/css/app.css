@@ -37,6 +37,8 @@ img {
 
 .wrapper {
   background: #ebb97c;
+  position: relative;
+  padding-bottom: 60px;
 }
 
 .header {
@@ -97,13 +99,12 @@ img {
 }
 
 .main {
-  padding-top: 100px;
-  min-height: 100vh;
+  padding-top: 84px;
 }
 
 .container {
   width: 84%;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
 @media screen and (max-width: 414px) {
@@ -288,6 +289,9 @@ img {
 }
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: #fcfeff;
   color: #ebb97c;
   display: flex;

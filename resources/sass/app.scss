@@ -73,6 +73,8 @@ img {
 }
 .wrapper{
   background: $base-color;
+  position: relative;
+  padding-bottom: 60px;
 }
 
 .header {
@@ -124,14 +126,13 @@ img {
   }
 }
 .main{
-  padding-top: 100px;
-  min-height:100vh;
+  padding-top: 84px;
 }
 
 
 .container{
   width: 84%;
-  margin: 0 auto;
+  margin: $space_3l auto;
   @include mq(){
     width: 100%;
   }
@@ -304,6 +305,9 @@ img {
 
 
 .footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: $main-color;
   color: $base-color;
   display: flex;

@@ -25,8 +25,6 @@
           @include('parts.article')
           @include('parts.article')
           @include('parts.article')
-          @include('parts.article')
-          @include('parts.article')
         </div>
       </section>
     </div>
