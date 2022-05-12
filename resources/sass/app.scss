@@ -78,7 +78,7 @@ img {
 .header {
   box-sizing: border-box;
   width: 100%;
-  height: 88px;
+  height: 84px;
   background: $main-color;
   display: flex;
   align-items: center;
@@ -89,7 +89,7 @@ img {
   transition: .3s;
   z-index: 2;
   &-logo{
-    font-size: 42px;
+    font-size: 40px;
     line-height: 0.88;
     letter-spacing: -0.08em;
     color: $base-color;
@@ -125,7 +125,7 @@ img {
 }
 .main{
   padding-top: 100px;
-  height:100vh;
+  min-height:100vh;
 }
 
 
@@ -135,6 +135,16 @@ img {
   @include mq(){
     width: 100%;
   }
+}
+
+.info{
+  background: $main-color;
+  padding: $space_xl;
+  color: $sub-color;
+  font-size: $font-size_l;
+  border-radius: $space_xxl;
+  border: 7px $sub-color solid;
+  margin-top: $space_xl;
 }
 
 .section{
@@ -155,12 +165,18 @@ img {
 }
 
 
+
+
+
+
+
+
 .article{
   position: relative;
   width: calc(33.3% - #{$space_xxl});
   margin-right: $space_xxl;
+  margin-bottom: $space_xxl;
   background: $main-color;
-  float: left;
   border-radius: $space_xxl;
   &::before {
     content: "";
@@ -185,6 +201,7 @@ img {
   }
   &-content{
     margin: $space_l;
+    flex-direction: column;
   }
   &-text{
     min-height: 84px;
@@ -198,7 +215,7 @@ img {
   &-bottom{
     position: relative;
     display:flex;
-  justify-content:space-between;
+    justify-content:space-between;
     p{
       float: left;
     }
@@ -219,12 +236,71 @@ img {
   }
   &-wrapper{
     margin-right: -$space_xxl;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
 }
 
 
 
 
+
+
+
+.form{
+  background: $main-color;
+  width: 840px;
+  margin: 0 auto;
+  border-radius: $space_xl;
+  padding: $space_xxl 88px;
+  box-sizing: border-box;
+  .title{
+    padding: 0;
+  }
+  & .input-holder{
+    margin-top: $space_xxl;
+  }
+  &-label{
+    display: block;
+    font-size: $font-size_xl;
+  }
+  &-input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: $space_m;
+    outline: none;
+    border: 5px $base-color solid;
+    font-size: $font-size_xl;
+    border-radius: $space_l;
+    &:focus {
+      border: 5px $sub-color solid;
+    }
+    .error {
+      border: 5px $accent-color solid;
+    }
+  }
+  .button-holder{
+    text-align: center;
+  }
+  &-button{
+    width: 130px;
+    margin: $space_xxl auto 0;
+    border: none;
+    background: $sub-color;
+    color: $main-color;
+    padding: $space_l;
+    border-radius: $space_l;
+    transition: .3s;
+    font-size: $font-size_xl;
+    &:hover{
+      color: $main-color;
+      transition: .3s;
+      background: #53b567;
+      transform: translateY(-1px);
+    }
+  }
+}
 
 
 .footer {

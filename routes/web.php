@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('index');
 })->name('index');
+Route::get('/register', function(){
+  return view('auth.register');
+})->name('register');
