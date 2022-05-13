@@ -20,3 +20,7 @@ Route::get('/register', function(){
 Route::get('/mypage', function(){
   return view('mypage');
 });
+
+Route::get('/party/1', function(){
+  return view('party');
+});

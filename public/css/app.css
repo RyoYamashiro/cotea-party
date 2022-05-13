@@ -115,6 +115,21 @@ img {
   }
 }
 
+.container-bg-white {
+  background: #fcfeff;
+  border-radius: 30px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.container-bg-white .title {
+  padding: 0;
+}
+
+.container-bg-white .title-wrapper {
+  margin-bottom: 15px;
+}
+
 .info {
   background: #fcfeff;
   padding: 20px;
@@ -290,14 +305,14 @@ img {
   width: 100%;
   border-collapse: separate;
   border-radius: 20px;
-  border-left: 4px solid #5ebf71;
-  border-top: 4px solid #5ebf71;
+  border-left: 5px solid #5ebf71;
+  border-top: 5px solid #5ebf71;
   text-align: center;
 }
 
 .profile-table td {
-  border-bottom: 4px solid #5ebf71;
-  border-right: 4px solid #5ebf71;
+  border-bottom: 5px solid #5ebf71;
+  border-right: 5px solid #5ebf71;
   background-color: #fcfeff;
   padding: 10px 20px;
 }
@@ -325,6 +340,67 @@ img {
 
 .profile-table .bio-text {
   text-align: left;
+}
+
+.party-top {
+  padding: 15px 0;
+  border-top: 5px #ebb97c solid;
+  border-bottom: 5px #ebb97c solid;
+  display: flex;
+  justify-content: space-between;
+}
+
+.party-title {
+  color: #5ebf71;
+  font-size: 38px;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.party-button {
+  background: #5ebf71;
+  color: #fcfeff;
+  padding: 15px;
+  border-radius: 15px;
+  transition: 0.3s;
+  font-size: 22px;
+}
+
+.party-button:hover {
+  color: #fcfeff;
+  transition: 0.3s;
+  background: #53b567;
+  transform: translateY(-1px);
+}
+
+.party-item {
+  margin-bottom: 10px;
+}
+
+.party-item-title {
+  color: #5ebf71;
+  font-weight: bold;
+}
+
+.party-item-content {
+  font-size: 22px;
+}
+
+.party-middle {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 5px #ebb97c solid;
+}
+
+.party-middle-map {
+  background: #5ebf71;
+  height: 330px;
+  width: 430px;
+  border-radius: 20px;
+}
+
+.party-bottom {
+  padding-top: 15px;
 }
 
 .footer {

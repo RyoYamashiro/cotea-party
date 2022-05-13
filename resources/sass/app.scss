@@ -138,6 +138,18 @@ img {
   @include mq(){
     width: 100%;
   }
+  &-bg-white{
+    background: $main-color;
+    border-radius: $space_xxl;
+    padding: $space_3l;
+    box-sizing: border-box;
+    .title{
+      padding: 0;
+      &-wrapper{
+        margin-bottom: $space_l;
+      }
+    }
+  }
 }
 
 .info{
@@ -308,12 +320,12 @@ img {
 	width:100%;
 	border-collapse: separate;
 	border-radius:20px;
-	border-left:4px solid $sub-color;
-	border-top:4px solid $sub-color;
+	border-left:5px solid $sub-color;
+	border-top:5px solid $sub-color;
   text-align: center;
   td{
-  	border-bottom:4px solid $sub-color;
-  	border-right:4px solid $sub-color;
+  	border-bottom:5px solid $sub-color;
+  	border-right:5px solid $sub-color;
     background-color: $main-color;
     padding: $space_m $space_xl;
   }
@@ -340,6 +352,61 @@ img {
   }
 }
 
+
+.party{
+  &-top{
+    padding: $space_l 0;
+    border-top: 5px $base-color solid;
+    border-bottom: 5px $base-color solid;
+    display: flex;
+    justify-content: space-between;
+  }
+  &-title{
+    color: $sub-color;
+    font-size: $font-size_3l;
+    font-family: $theme-font;
+  }
+  &-button{
+    background: $sub-color;
+    color: $main-color;
+    padding: $space_l;
+    border-radius: $space_l;
+    transition: .3s;
+    font-size: $font-size_xl;
+    &:hover{
+      color: $main-color;
+      transition: .3s;
+      background: #53b567;
+      transform: translateY(-1px);
+    }
+  }
+  &-item{
+    margin-bottom: $space_m;
+    &-title{
+      color: $sub-color;
+      font-weight: bold;
+    }
+    &-content{
+      font-size: $font-size_xl;
+    }
+  }
+  &-middle{
+    padding: $space_l 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 5px $base-color solid;
+    &-map{
+      background: $sub-color;
+      height: 330px;
+      width: 430px;
+      border-radius: $space_xl;
+    }
+  }
+  &-bottom{
+    padding-top: $space_l;
+  }
+
+}
 
 
 
