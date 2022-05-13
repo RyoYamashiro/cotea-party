@@ -10,7 +10,7 @@
         <a class="menu-link" href="">ログイン</a>
       </li>
       <li class="menu-item">
-        <a class="menu-link" href="">マイページ</a>
+        <a class="menu-link" href="/mypage">マイページ</a>
       </li>
       <li class="menu-item">
         <a class="menu-link" href="">投稿</a>

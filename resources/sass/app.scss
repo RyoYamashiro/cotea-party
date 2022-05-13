@@ -74,7 +74,9 @@ img {
 .wrapper{
   background: $base-color;
   position: relative;
+  min-height: 100vh;
   padding-bottom: 60px;
+  box-sizing: border-box;
 }
 
 .header {
@@ -149,7 +151,7 @@ img {
 }
 
 .section{
-  margin-top: $space_xl;
+  margin-top: $space_xxl;
 }
 .title{
   padding: $space_l $space_xxl;
@@ -161,7 +163,7 @@ img {
   color: $base-color;
   &-wrapper{
     text-align: center;
-    margin-bottom: $space_xl;
+    margin-bottom: $space_xxl;
   }
 }
 
@@ -251,7 +253,7 @@ img {
   background: $main-color;
   width: 840px;
   margin: 0 auto;
-  border-radius: $space_xl;
+  border-radius: $space_xxl;
   padding: $space_xxl 88px;
   box-sizing: border-box;
   .title{
@@ -300,6 +302,42 @@ img {
     }
   }
 }
+
+
+.profile-table{
+	width:100%;
+	border-collapse: separate;
+	border-radius:20px;
+	border-left:4px solid $sub-color;
+	border-top:4px solid $sub-color;
+  text-align: center;
+  td{
+  	border-bottom:4px solid $sub-color;
+  	border-right:4px solid $sub-color;
+    background-color: $main-color;
+  }
+  .thead{
+    &-first-table-data{
+      border-radius:$space_l 0 0 0;
+    }
+    &-last-table-data{
+    	border-radius:0 $space_l 0 0;
+    }
+  }
+  .tbody tr:last-child td:last-child{
+    border-radius:0 0 $space_l $space_l;
+  }
+  .table-data-title{
+    color: $accent-color;
+    font-weight: bold;
+  }
+  .table-data{
+    font-size: $font-size_xl;
+  }
+}
+
+
+
 
 
 .footer {

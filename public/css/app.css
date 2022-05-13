@@ -38,7 +38,9 @@ img {
 .wrapper {
   background: #ebb97c;
   position: relative;
+  min-height: 100vh;
   padding-bottom: 60px;
+  box-sizing: border-box;
 }
 
 .header {
@@ -124,7 +126,7 @@ img {
 }
 
 .section {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .title {
@@ -139,7 +141,7 @@ img {
 
 .title-wrapper {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .article {
@@ -225,7 +227,7 @@ img {
   background: #fcfeff;
   width: 840px;
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: 30px;
   padding: 30px 88px;
   box-sizing: border-box;
 }
@@ -282,6 +284,42 @@ img {
   transition: 0.3s;
   background: #53b567;
   transform: translateY(-1px);
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: separate;
+  border-radius: 20px;
+  border-left: 4px solid #5ebf71;
+  border-top: 4px solid #5ebf71;
+  text-align: center;
+}
+
+.profile-table td {
+  border-bottom: 4px solid #5ebf71;
+  border-right: 4px solid #5ebf71;
+  background-color: #fcfeff;
+}
+
+.profile-table .thead-first-table-data {
+  border-radius: 15px 0 0 0;
+}
+
+.profile-table .thead-last-table-data {
+  border-radius: 0 15px 0 0;
+}
+
+.profile-table .tbody tr:last-child td:last-child {
+  border-radius: 0 0 15px 15px;
+}
+
+.profile-table .table-data-title {
+  color: #f77ea6;
+  font-weight: bold;
+}
+
+.profile-table .table-data {
+  font-size: 22px;
 }
 
 .footer {
