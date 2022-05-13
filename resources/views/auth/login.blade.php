@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 
-@section('title', '新規登録')
+@section('title', 'ログイン')
 
 @section('content')
 <div class="wrapper">
@@ -12,21 +12,11 @@
 
 
 
-      <form class="form" action="{{ route('register') }}" method="post">
+      <form class="form" action="{{ route('login') }}" method="post">
         <div class="title-wrapper">
-          <h2 class="title">ユーザー登録</h2>
+          <h2 class="title">ログイン</h2>
         </div>
         @csrf
-        <div class="input-holder">
-          <label class="form-label" for="name">ユーザー名</label>
-          <input class="form-input" type="text" name="name" required value="{{ old('name') }}">
-        </div>
-
-        @if ($errors->has('name'))
-        <p class="error-msg">
-            {{$errors->first('name')}}
-        </p>
-        @endif
 
 
         <div class="input-holder">
@@ -50,15 +40,13 @@
         </p>
         @endif
 
+        <input type="hidden" name="remember" id="remember" value="on">
 
-        <div class="input-holder">
-          <label class="form-label" for="password_confirmation">パスワード（再入力）</label>
-          <input class="form-input" type="password" name="password_confirmation" required value="">
-        </div>
 
         <div class="button-holder">
-          <button class="form-button" type="submit">登録</button>
+          <button class="form-button" type="submit">ログイン</button>
         </div>
+
 
       </form>
 

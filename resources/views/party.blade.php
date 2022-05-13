@@ -45,6 +45,12 @@
               3度の飯よりカフェ巡りが好きな方！ぜひこちらのパーティーにご参加ください！<br>
               沖縄県内でおすすめのカフェを参加者同志で紹介し合いましょう。
             </p>
+            <div class="host-holder">
+              <div class="party-item">
+                <p class="party-item-title">主催者</p>
+                <p class="party-item-content">りょうやま</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

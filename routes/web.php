@@ -10,13 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('index');
 })->name('index');
-Route::get('/register', function(){
-  return view('auth.register');
-})->name('register');
 Route::get('/mypage', function(){
   return view('mypage');
 });

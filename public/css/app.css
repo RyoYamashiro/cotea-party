@@ -159,6 +159,12 @@ img {
   margin-bottom: 30px;
 }
 
+.error-msg {
+  color: #f77ea6;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+}
+
 .article {
   position: relative;
   width: calc(33.3% - 30px);
@@ -342,6 +348,21 @@ img {
   text-align: left;
 }
 
+.profile-button {
+  background: #5ebf71;
+  color: #fcfeff;
+  padding: 15px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.profile-button:hover {
+  color: #fcfeff;
+  transition: 0.3s;
+  background: #53b567;
+  transform: translateY(-1px);
+}
+
 .party-top {
   padding: 15px 0;
   border-top: 5px #ebb97c solid;
@@ -401,6 +422,12 @@ img {
 
 .party-bottom {
   padding-top: 15px;
+  overflow: hidden;
+}
+
+.party-bottom .host-holder {
+  display: inline-block;
+  float: right;
 }
 
 .footer {

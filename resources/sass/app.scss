@@ -180,7 +180,11 @@ img {
 }
 
 
-
+.error-msg{
+  color: $accent-color;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+}
 
 
 
@@ -351,6 +355,19 @@ img {
     text-align: left;
   }
 }
+.profile-button{
+  background: $sub-color;
+  color: $main-color;
+  padding: $space_l;
+  border-radius: $space_l;
+  transition: .3s;
+  &:hover{
+    color: $main-color;
+    transition: .3s;
+    background: #53b567;
+    transform: translateY(-1px);
+  }
+}
 
 
 .party{
@@ -404,6 +421,12 @@ img {
   }
   &-bottom{
     padding-top: $space_l;
+    overflow: hidden;
+
+    .host-holder{
+      display: inline-block;
+      float: right;
+    }
   }
 
 }

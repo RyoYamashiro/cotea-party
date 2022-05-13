@@ -4,10 +4,10 @@
   <nav class="nav-menu">
     <ul class="menu">
       <li class="menu-item">
-        <a class="menu-link" href="{{url('/register')}}">新規登録</a>
+        <a class="menu-link" href="{{route('register')}}">新規登録</a>
       </li>
       <li class="menu-item">
-        <a class="menu-link" href="">ログイン</a>
+        <a class="menu-link" href="{{route('login')}}">ログイン</a>
       </li>
       <li class="menu-item">
         <a class="menu-link" href="/mypage">マイページ</a>

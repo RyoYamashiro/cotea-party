@@ -52,6 +52,8 @@
             </tr>
           </tbody>
         </table>
+        <a class="profile-button" href="{{route('logout')}}">ログアウト</a>
+        <a class="profile-button" href="/profileEdit">プロフィール編集</a>
       </section>
 
       <section class="section">
