@@ -37,9 +37,17 @@
 
           <tbody class="tbody">
             <tr>
-              <td class="" colspan="4">
+              <td colspan="4">
                 <p class="table-data-title">メールアドレス</p>
                 <p class="table-data">xxxxxxxxx@xxxx.co.jp</p>
+              </td>
+            </tr>
+          </tbody>
+          <tbody class="tbody tbody-bottom">
+            <tr>
+              <td colspan="4">
+                <p class="table-data-title">自己紹介文</p>
+                <p class="table-data bio-text">こんにちは。普段は近所で散歩しながら、時々公園で読書をしています。<br>ご飯はあまり食べるほうではありません。</p>
               </td>
             </tr>
           </tbody>

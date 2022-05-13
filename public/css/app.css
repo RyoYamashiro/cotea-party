@@ -299,6 +299,7 @@ img {
   border-bottom: 4px solid #5ebf71;
   border-right: 4px solid #5ebf71;
   background-color: #fcfeff;
+  padding: 10px 20px;
 }
 
 .profile-table .thead-first-table-data {
@@ -309,7 +310,7 @@ img {
   border-radius: 0 15px 0 0;
 }
 
-.profile-table .tbody tr:last-child td:last-child {
+.profile-table .tbody-bottom td {
   border-radius: 0 0 15px 15px;
 }
 
@@ -320,6 +321,10 @@ img {
 
 .profile-table .table-data {
   font-size: 22px;
+}
+
+.profile-table .bio-text {
+  text-align: left;
 }
 
 .footer {

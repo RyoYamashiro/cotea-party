@@ -315,6 +315,7 @@ img {
   	border-bottom:4px solid $sub-color;
   	border-right:4px solid $sub-color;
     background-color: $main-color;
+    padding: $space_m $space_xl;
   }
   .thead{
     &-first-table-data{
@@ -324,7 +325,7 @@ img {
     	border-radius:0 $space_l 0 0;
     }
   }
-  .tbody tr:last-child td:last-child{
+  .tbody-bottom td{
     border-radius:0 0 $space_l $space_l;
   }
   .table-data-title{
@@ -333,6 +334,9 @@ img {
   }
   .table-data{
     font-size: $font-size_xl;
+  }
+  .bio-text{
+    text-align: left;
   }
 }
 
