@@ -206,6 +206,7 @@ img {
     position: absolute;
     top: 0;
     height: 100%;
+    width: 100%;
   }
   &-title{
     text-align: center;
@@ -280,7 +281,8 @@ img {
   }
   &-label{
     display: block;
-    font-size: $font-size_xl;
+    color: $sub-color;
+    font-weight: bold;
   }
   &-input{
     width: 100%;

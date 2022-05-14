@@ -184,6 +184,7 @@ img {
   position: absolute;
   top: 0;
   height: 100%;
+  width: 100%;
 }
 
 .article-title {
@@ -263,7 +264,8 @@ img {
 
 .form-label {
   display: block;
-  font-size: 22px;
+  color: #5ebf71;
+  font-weight: bold;
 }
 
 .form-input {

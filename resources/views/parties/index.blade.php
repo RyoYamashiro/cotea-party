@@ -17,14 +17,10 @@
         <div class="title-wrapper">
           <h2 class="title">パーティー一覧</h2>
         </div>
-
         <div class="article-wrapper">
-          @include('parts.article')
-          @include('parts.article')
-          @include('parts.article')
-          @include('parts.article')
-          @include('parts.article')
-          @include('parts.article')
+          @foreach($parties as $party)
+            @include('parts.article')
+          @endforeach
         </div>
       </section>
     </div>

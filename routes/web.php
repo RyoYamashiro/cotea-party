@@ -11,9 +11,8 @@
 |
 */
 Auth::routes();
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+Route::get('/', 'PartyController@index')->name('parties.index');
+Route::resource('/parties', 'PartyController')->except(['index'])->middleware('auth');
 Route::get('/mypage', function(){
   return view('mypage');
 });
