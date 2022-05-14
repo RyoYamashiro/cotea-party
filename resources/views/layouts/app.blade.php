@@ -15,6 +15,9 @@
     </title>
   </head>
   <body>
+    <div id="example">
+      <Example />
+    </div>
     @yield('content')
 
 
