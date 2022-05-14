@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Party;
 use App\Http\Requests\PartyRequest;
+use Carbon\Carbon;
+
 
 use Illuminate\Http\Request;
 
@@ -21,18 +23,29 @@ class PartyController extends Controller
   }
   public function store(PartyRequest $request, Party $party)
   {
-    $party->fill($request->all());
+    $party->title = $request->title;
+    $party->date = date( 'Y-m-d H:i:s', strtotime( $request->date ) );
+    $party->address = $request->address;
+    $party->shopname = $request->shopname;
+    $party->content = $request->content;
     $party->user_id = $request->user()->id;
     $party->save();
     return redirect()->route('parties.index');
   }
   public function edit(Party $party)
   {
-    return view('parties.edit', compact('party'));
+    $date = $party->date->format('Y-m-d\TH:i');
+    return view('parties.edit', compact('party', 'date'));
   }
   public function update(PartyRequest $request, Party $party)
   {
-    $party->fill($request->all())->save();
+    $party->title = $request->title;
+    $party->date = date( 'Y-m-d H:i:s', strtotime( $request->date ) );
+    $party->address = $request->address;
+    $party->shopname = $request->shopname;
+    $party->content = $request->content;
+
+    $party->save();
     return redirect()->route('parties.index');
   }
   public function show(Party $party)

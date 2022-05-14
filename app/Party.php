@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Party extends Model
 {
   protected $dates = [
-    'date'
+    'date',
   ];
   protected $fillable = [
     'title',
     'address',
+    'date',
     'shopname',
     'content',
   ];
