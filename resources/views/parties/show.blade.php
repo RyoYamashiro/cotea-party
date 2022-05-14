@@ -15,7 +15,12 @@
 
         <div class="party-top">
           <h3 class="party-title">{{$party->title}}</h3>
-          <a class="party-button" href="">参加申請する</a>
+          <div class="party-button-holder">
+            @if(Auth::id() === $party->user_id)
+              <a class="party-button edit" href="{{route('parties.edit', compact('party'))}}">編集する</a>
+              <a class="party-button delete" href="{{route('parties.destroy', compact('party'))}}">削除する</a>
+            @endif
+          </div>
 
         </div>
 

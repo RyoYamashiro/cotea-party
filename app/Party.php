@@ -12,7 +12,6 @@ class Party extends Model
   ];
   protected $fillable = [
     'title',
-    'date',
     'address',
     'shopname',
     'content',

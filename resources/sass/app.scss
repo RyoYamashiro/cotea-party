@@ -386,17 +386,28 @@ img {
     font-family: $theme-font;
   }
   &-button{
-    background: $sub-color;
     color: $main-color;
     padding: $space_l;
     border-radius: $space_l;
     transition: .3s;
     font-size: $font-size_xl;
+    display: inline-block;
     &:hover{
       color: $main-color;
       transition: .3s;
-      background: #53b567;
       transform: translateY(-1px);
+    }
+    &.edit{
+      background: $sub-color;
+      &:hover{
+        background: #53b567;
+      }
+    }
+    &.delete{
+      background: $accent-color;
+      &:hover{
+        background: #ed749d;
+      }
     }
   }
   &-item{

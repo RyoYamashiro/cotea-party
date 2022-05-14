@@ -9,8 +9,7 @@
 
   <main class="main">
       <div class="container">
-        <form class="form" action="{{ route('parties.update', compact('party')) }}" method="post">
-          @method('PATCH')
+        <form class="form" action="{{ route('parties.store') }}" method="post">
           @include('parties.form')
           <div class="button-holder">
             <button class="form-button" type="submit">登録</button>

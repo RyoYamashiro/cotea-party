@@ -30,6 +30,11 @@ class PartyController extends Controller
   {
     return view('parties.edit', compact('party'));
   }
+  public function update(PartyRequest $request, Party $party)
+  {
+    $party->fill($request->all())->save();
+    return redirect()->route('parties.index');
+  }
   public function show(Party $party)
   {
     return view('parties.show', compact('party'));

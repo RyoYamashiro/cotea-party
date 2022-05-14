@@ -380,19 +380,34 @@ img {
 }
 
 .party-button {
-  background: #5ebf71;
   color: #fcfeff;
   padding: 15px;
   border-radius: 15px;
   transition: 0.3s;
   font-size: 22px;
+  display: inline-block;
 }
 
 .party-button:hover {
   color: #fcfeff;
   transition: 0.3s;
-  background: #53b567;
   transform: translateY(-1px);
+}
+
+.party-button.edit {
+  background: #5ebf71;
+}
+
+.party-button.edit:hover {
+  background: #53b567;
+}
+
+.party-button.delete {
+  background: #f77ea6;
+}
+
+.party-button.delete:hover {
+  background: #ed749d;
 }
 
 .party-item {
