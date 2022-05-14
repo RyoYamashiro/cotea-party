@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class PartyController extends Controller
 {
+  public function __construct()
+  {
+    $this->authorizeResource(Party::class, 'party');
+  }
   public function index()
   {
     $parties = Party::all()->sortByDesc('created_at');
@@ -51,5 +55,10 @@ class PartyController extends Controller
   public function show(Party $party)
   {
     return view('parties.show', compact('party'));
+  }
+  public function destroy(Party $party)
+  {
+    $party->delete();
+    return redirect()->route('parties.index');
   }
 }

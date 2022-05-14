@@ -62,8 +62,6 @@
         </div>
         <div class="article-wrapper">
           @include('parts.article')
-          @include('parts.article')
-          @include('parts.article')
         </div>
       </section>
 
@@ -73,8 +71,6 @@
         </div>
         <div class="article-wrapper">
           @include('parts.article')
-          @include('parts.article')
-          @include('parts.article')
         </div>
       </section>
 
@@ -83,8 +79,6 @@
           <h2 class="title">申請中パーティー</h2>
         </div>
         <div class="article-wrapper">
-          @include('parts.article')
-          @include('parts.article')
           @include('parts.article')
         </div>
       </section>

@@ -18,7 +18,11 @@
           <div class="party-button-holder">
             @if(Auth::id() === $party->user_id)
               <a class="party-button edit" href="{{route('parties.edit', compact('party'))}}">編集する</a>
-              <a class="party-button delete" href="{{route('parties.destroy', compact('party'))}}">削除する</a>
+              <form class="party-delete-button-holder" action="{{route('parties.destroy', compact('party'))}}" method="post">
+                @method('DELETE')
+                @csrf
+                <button class="party-button delete" type="submit" name="button">削除する</button>
+              </form>
             @endif
           </div>
 

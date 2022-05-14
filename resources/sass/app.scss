@@ -19,8 +19,8 @@ $base-font-color: #5c5c5c;
 $main-color: #fcfeff;
 $sub-color: #5ebf71;
 $accent-color: #f77ea6;
-$theme-font: 'Kaisei HarunoUmi', serif;
-
+$font-family_theme: 'Kaisei HarunoUmi', serif;
+$font-family_default: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 
 $site-width: 1280px;
 
@@ -46,7 +46,7 @@ html, body {
   font-size: $font-size_default;
   background: $main-color;
   line-height: 1.6;
-  font-family: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-family: $font-family_default;
   text-size-adjust: 100%;
   letter-spacing: 0.1em;
 }
@@ -97,7 +97,7 @@ img {
     line-height: 0.88;
     letter-spacing: -0.08em;
     color: $base-color;
-    font-family: $theme-font;
+    font-family: $font-family_theme;
     height: 100%;
   }
 }
@@ -106,7 +106,7 @@ img {
   display: flex;
   align-items: center;
   font-size: $font-size_xl;
-  font-family: $theme-font;
+  font-family: $font-family_theme;
   &-item {
     margin-right: $space_xl;
   }
@@ -171,7 +171,7 @@ img {
   display: inline-block;
   border-radius: $space_l;
   font-size: 32px;
-  font-family: $theme-font;
+  font-family: $font-family_theme;
   color: $base-color;
   &-wrapper{
     text-align: center;
@@ -213,7 +213,7 @@ img {
     padding: $space_m;
     font-size: $font-size_xl;
     font-weight: bold;
-    font-family: $theme-font;
+    font-family: $font-family_theme;
   }
   &-map{
     height: 45%;
@@ -224,7 +224,7 @@ img {
     width: 100%;
   }
   &-date{
-    font-family: $theme-font;
+    font-family: $font-family_theme;
     font-size: $font-size_xl;
     line-height: 0.93;
   }
@@ -383,7 +383,12 @@ img {
   &-title{
     color: $sub-color;
     font-size: $font-size_3l;
-    font-family: $theme-font;
+    font-family: $font-family_theme;
+  }
+
+  &-delete-button-holder{
+    display: inline-block;
+
   }
   &-button{
     color: $main-color;
@@ -405,6 +410,9 @@ img {
     }
     &.delete{
       background: $accent-color;
+      border: none;
+      letter-spacing: 0.1em;
+      font-family: $font-family_default;
       &:hover{
         background: #ed749d;
       }
