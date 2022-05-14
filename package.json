@@ -14,7 +14,7 @@
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
         "browser-sync": "^2.27.9",
-        "browser-sync-webpack-plugin": "2.0.1",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "cross-env": "^7.0",
         "jquery": "^3.2",
         "laravel-mix": "^6.0.43",
@@ -30,6 +30,7 @@
     "dependencies": {
         "@react-google-maps/api": "^2.10.2",
         "babel-loader": "^8.0.4\n",
-        "webpack": "^5.72.1"
+        "webpack": "^5.72.1",
+        "webpack-shell-plugin-next": "^2.2.2"
     }
 }
