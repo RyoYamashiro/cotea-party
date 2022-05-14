@@ -1,6 +1,6 @@
 <article class="article">
   <div class="article-container">
-    <h3 class="article-title"><a href="/party/1">{{$party->title}}</a></h3>
+    <h3 class="article-title"><a href="{{route('parties.show', compact('party'))}}">{{$party->title}}</a></h3>
     <div class="article-map">
     </div>
 
@@ -16,7 +16,7 @@
           <p class="article-date">{{$party->date->format('Y/m/d H:i')}}</p>
         </div>
 
-        <a class="article-button" href="/party/1">詳細を見る</a>
+        <a class="article-button" href="{{route('parties.show', compact('party'))}}">詳細を見る</a>
       </div>
     </div>
 

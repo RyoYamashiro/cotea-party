@@ -14,7 +14,7 @@
         </div>
 
         <div class="party-top">
-          <h3 class="party-title">素敵なカフェ探そう</h3>
+          <h3 class="party-title">{{$party->title}}</h3>
           <a class="party-button" href="">参加申請する</a>
 
         </div>
@@ -23,15 +23,15 @@
           <div class="party-middle-content">
             <div class="party-item">
               <p class="party-item-title">開催日時</p>
-              <p class="party-item-content">2022/05/14 15:00</p>
+              <p class="party-item-content">{{$party->date->format('Y/m/d H:i')}}</p>
             </div>
             <div class="party-item">
               <p class="party-item-title">開催場所住所</p>
-              <p class="party-item-content">沖縄県那覇市○丁目○○ パークビル2F</p>
+              <p class="party-item-content">{{$party->address}}</p>
             </div>
             <div class="party-item">
               <p class="party-item-title">開催場所店名</p>
-              <p class="party-item-content">ララベルカフェ</p>
+              <p class="party-item-content">{{$party->shopname}}</p>
             </div>
           </div>
 
@@ -42,13 +42,12 @@
           <div class="party-item">
             <p class="party-item-title">パーティー詳細説明</p>
             <p class="party-item-content">
-              3度の飯よりカフェ巡りが好きな方！ぜひこちらのパーティーにご参加ください！<br>
-              沖縄県内でおすすめのカフェを参加者同志で紹介し合いましょう。
+              {{$party->content}}
             </p>
             <div class="host-holder">
               <div class="party-item">
                 <p class="party-item-title">主催者</p>
-                <p class="party-item-content">りょうやま</p>
+                <p class="party-item-content">{{$party->user->name}}</p>
               </div>
             </div>
           </div>

@@ -12,11 +12,12 @@
 */
 Auth::routes();
 Route::get('/', 'PartyController@index')->name('parties.index');
-Route::resource('/parties', 'PartyController')->except(['index'])->middleware('auth');
+Route::resource('/parties', 'PartyController')->except(['index', 'show'])->middleware('auth');
+Route::resource('/parties', 'PartyController')->only(['show']);
 Route::get('/mypage', function(){
   return view('mypage');
 });
 
 Route::get('/party/1', function(){
-  return view('party');
+  return view('parties.party');
 });

@@ -20,10 +20,18 @@ class PartyController extends Controller
     return view('parties.create');
   }
   public function store(PartyRequest $request, Party $party)
-   {
-       $party->fill($request->all());
-       $party->user_id = $request->user()->id;
-       $party->save();
-       return redirect()->route('parties.index');
-   }
+  {
+    $party->fill($request->all());
+    $party->user_id = $request->user()->id;
+    $party->save();
+    return redirect()->route('parties.index');
+  }
+  public function edit(Party $party)
+  {
+    return view('parties.edit', compact('party'));
+  }
+  public function show(Party $party)
+  {
+    return view('parties.show', compact('party'));
+  }
 }
