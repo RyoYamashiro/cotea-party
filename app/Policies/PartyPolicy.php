@@ -53,7 +53,7 @@ class PartyPolicy
      */
     public function update(User $user, Party $party)
     {
-      return $user->id === $article->user_id;
+      return $user->id === $party->user_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class PartyPolicy
      */
     public function delete(User $user, Party $party)
     {
-      return $user->id === $article->user_id;
+      return $user->id === $party->user_id;
     }
 
     /**

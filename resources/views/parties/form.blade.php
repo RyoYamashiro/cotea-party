@@ -11,12 +11,13 @@
 
 <div class="input-holder">
   <label class="form-label" for="date">開催日時</label>
-  <input class="form-input" type="datetime-local" name="date" required value="{{ $date ?? old('date') }}">
+  <input class="form-input" type="datetime-local" name="date" required value="{{ $party->date->format('Y-m-d\TH:i') ?? old('date') }}">
 </div>
 
 <div class="input-holder">
   <label class="form-label" for="map">開催場所地図</label>
-  <div class="party-middle-map">
+  <div class="party-middle-map" id="select_map">
+    <SelectMap />
   </div>
 </div>
 <div class="input-holder">

@@ -434,9 +434,8 @@ img {
     justify-content: space-between;
     border-bottom: 5px $base-color solid;
     &-map{
-      background: $sub-color;
-      height: 330px;
-      width: 430px;
+      height: 400px;
+      width: 100%;
       border-radius: $space_xl;
     }
   }

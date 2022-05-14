@@ -384,9 +384,8 @@ img {
   border-bottom: 5px #ebb97c solid;
 }
 .party-middle-map {
-  background: #5ebf71;
-  height: 330px;
-  width: 430px;
+  height: 400px;
+  width: 100%;
   border-radius: 20px;
 }
 .party-bottom {
