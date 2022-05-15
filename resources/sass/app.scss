@@ -435,8 +435,11 @@ img {
     border-bottom: 5px $base-color solid;
     &-map{
       height: 400px;
-      width: 100%;
       border-radius: $space_xl;
+      width: 500px;
+      &.edit{
+        width: 100%;
+      }
     }
   }
   &-bottom{

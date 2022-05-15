@@ -15,7 +15,7 @@
           <div class="button-holder">
             <button class="form-button" type="submit">登録</button>
           </div>
-
+        
         </form>
       </div>
 

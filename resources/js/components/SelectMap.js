@@ -5,23 +5,36 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 export default function SelectMap({addressValue}) {
+  const element = document.getElementById('select_map');
+  const defaultAddress = element.dataset.address;
+  const defaultLatLng = {
+    lat: Number(element.dataset.lat) ?? 34.85658728,
+    lng: Number(element.dataset.lng) ?? 135.9412302,
+  }
+
+
+
+
+  console.log(defaultLatLng);
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
   const [geocoder, setGeocoder] = useState(null);
   const [mapAddress, setMapAddress] = useState(null);
   const [marker, setMarker] = useState(null);
-  const [latLng, setLatLng] = useState({
-    lat: 37.09812337,
-    lng: 139.5107987,
-  });
-  const [address, setAddress] = useState(addressValue);
-  console.log(addressValue);
+  const [latLng, setLatLng] = useState(defaultLatLng);
 
+  console.log(addressValue);
+  const [address, setAddress] = useState(defaultAddress);
 
   const handleApiLoaded = (obj) => {
     setMap(obj.map);
     setMaps(obj.maps);
     setGeocoder(new obj.maps.Geocoder());
+    setMarker(new obj.maps.Marker({
+      map,
+      position: latLng,
+    }));
+    map.panTo(latLng);
   };
 
   const search = () => {
@@ -46,6 +59,8 @@ export default function SelectMap({addressValue}) {
     if (marker) {
       marker.setMap(null);
     }
+    lat = Number(lat.toString().slice(0, 11));
+    lng = Number(lng.toString().slice(0, 11));
     const localeLatLng = {
       lat,
       lng,
@@ -97,12 +112,12 @@ export default function SelectMap({addressValue}) {
 
       <div className="input-holder">
         <label className="form-label" htmlFor="map">開催場所地図</label>
-        <div className="party-middle-map">
+        <div className="party-middle-map edit">
           <div style={{ height: '100%', width: '100%'}}>
             <GoogleMapReact
               bootstrapURLKeys={{ key: 'AIzaSyDvHEWKY9pxVogqT3aW1o6IQxXQJupV-wA' }}
               defaultCenter={latLng}
-              defaultZoom={4}
+              defaultZoom={10}
               onGoogleApiLoaded={handleApiLoaded}
               onClick={updateLatLng}
             />

@@ -30,6 +30,8 @@ class PartyController extends Controller
     $party->title = $request->title;
     $party->date = date( 'Y-m-d H:i:s', strtotime( $request->date ) );
     $party->address = $request->address;
+    $party->lat = $request->lat;
+    $party->lng = $request->lng;
     $party->shopname = $request->shopname;
     $party->content = $request->content;
     $party->user_id = $request->user()->id;
@@ -46,6 +48,8 @@ class PartyController extends Controller
     $party->title = $request->title;
     $party->date = date( 'Y-m-d H:i:s', strtotime( $request->date ) );
     $party->address = $request->address;
+    $party->lat = $request->lat;
+    $party->lng = $request->lng;
     $party->shopname = $request->shopname;
     $party->content = $request->content;
 

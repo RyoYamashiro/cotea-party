@@ -44,7 +44,8 @@
             </div>
           </div>
 
-          <div class="party-middle-map">
+          <div class="party-middle-map" id="show_map">
+            <ShowMap lat="{{$party->lat}}" lng="{{$party->lng}}" />
           </div>
         </div>
         <div class="party-bottom">
