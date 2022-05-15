@@ -2266,7 +2266,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function SelectMap() {
+function SelectMap(_ref) {
+  var addressValue = _ref.addressValue;
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       map = _useState2[0],
@@ -2284,8 +2286,8 @@ function SelectMap() {
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState8 = _slicedToArray(_useState7, 2),
-      address = _useState8[0],
-      setAddress = _useState8[1];
+      mapAddress = _useState8[0],
+      setMapAddress = _useState8[1];
 
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState10 = _slicedToArray(_useState9, 2),
@@ -2300,6 +2302,13 @@ function SelectMap() {
       latLng = _useState12[0],
       setLatLng = _useState12[1];
 
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(addressValue),
+      _useState14 = _slicedToArray(_useState13, 2),
+      address = _useState14[0],
+      setAddress = _useState14[1];
+
+  console.log(addressValue);
+
   var handleApiLoaded = function handleApiLoaded(obj) {
     setMap(obj.map);
     setMaps(obj.maps);
@@ -2308,7 +2317,7 @@ function SelectMap() {
 
   var search = function search() {
     geocoder.geocode({
-      address: address
+      mapAddress: mapAddress
     }, function (results, status) {
       if (status === maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);
@@ -2327,12 +2336,12 @@ function SelectMap() {
     });
   };
 
-  var updateLatLng = function updateLatLng(_ref) {
-    var x = _ref.x,
-        y = _ref.y,
-        lat = _ref.lat,
-        lng = _ref.lng,
-        event = _ref.event;
+  var updateLatLng = function updateLatLng(_ref2) {
+    var x = _ref2.x,
+        y = _ref2.y,
+        lat = _ref2.lat,
+        lng = _ref2.lng,
+        event = _ref2.event;
 
     if (marker) {
       marker.setMap(null);
@@ -2349,18 +2358,11 @@ function SelectMap() {
       position: localeLatLng
     }));
     map.panTo(localeLatLng);
-  };
-
-  var postLatLng = function postLatLng() {
-    console.log(latLng.lat);
-    axios__WEBPACK_IMPORTED_MODULE_3___default().post('/react', {
-      lat: latLng.lat,
-      lng: latLng.lng
-    }).then(function (response) {
-      console.log(response);
-      geocodeLatLng(getPreName);
-    })["catch"](function (error) {
-      console.log(error);
+    geocoder.geocode({
+      'location': latLng
+    }, function (results, status) {
+      console.log(results);
+      setAddress(results[0].formatted_address.replace(/日本、, /, ''));
     });
   };
 
@@ -2387,36 +2389,69 @@ function SelectMap() {
     console.log(results[0].long_name);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      style: {
-        height: '100%',
-        width: '100%'
-      },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(google_map_react__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        bootstrapURLKeys: {
-          key: 'AIzaSyDvHEWKY9pxVogqT3aW1o6IQxXQJupV-wA'
-        },
-        defaultCenter: latLng,
-        defaultZoom: 4,
-        onGoogleApiLoaded: handleApiLoaded,
-        onClick: updateLatLng
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "text",
-          onChange: function onChange(e) {
-            return setAddress(e.target.value);
-          }
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-          type: "button",
-          onClick: search,
-          children: "Search"
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        onClick: postLatLng,
-        children: "\u8A66\u3057"
+  function handleChangeAddress(e) {
+    setAddress(e.target.value);
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "input-holder",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        className: "form-label",
+        htmlFor: "map",
+        children: "\u958B\u50AC\u5834\u6240\u5730\u56F3"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "party-middle-map",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+          style: {
+            height: '100%',
+            width: '100%'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(google_map_react__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            bootstrapURLKeys: {
+              key: 'AIzaSyDvHEWKY9pxVogqT3aW1o6IQxXQJupV-wA'
+            },
+            defaultCenter: latLng,
+            defaultZoom: 4,
+            onGoogleApiLoaded: handleApiLoaded,
+            onClick: updateLatLng
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            type: "hidden",
+            name: "lat",
+            value: latLng.lat
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+            type: "hidden",
+            name: "lng",
+            value: latLng.lng
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "text",
+              onChange: function onChange(e) {
+                return setMapAddress(e.target.value);
+              }
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+              type: "button",
+              onClick: search,
+              children: "Search"
+            })]
+          })]
+        })
       })]
-    })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "input-holder",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        className: "form-label",
+        htmlFor: "address",
+        children: "\u958B\u50AC\u5834\u6240\u4F4F\u6240(\u5730\u56F3\u30D4\u30F3\u7559\u3081\u3057\u305F\u3089\u81EA\u52D5\u5165\u529B)"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+        className: "form-input",
+        type: "text",
+        onChange: handleChangeAddress,
+        name: "address",
+        required: true,
+        value: address
+      })]
+    })]
   });
 }
 

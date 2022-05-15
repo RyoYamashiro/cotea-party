@@ -14,16 +14,11 @@
   <input class="form-input" type="datetime-local" name="date" required value="{{ $party->date->format('Y-m-d\TH:i') ?? old('date') }}">
 </div>
 
-<div class="input-holder">
-  <label class="form-label" for="map">開催場所地図</label>
-  <div class="party-middle-map" id="select_map">
-    <SelectMap />
-  </div>
+{{logger($party->address ?? old('address') )}}
+<div id="select_map">
+  <SelectMap addressValue="{{ $party->address ?? old('address') }}" />
 </div>
-<div class="input-holder">
-  <label class="form-label" for="address">開催場所住所(地図ピン留めしたら自動入力)</label>
-  <input class="form-input" type="text" name="address" required value="{{ $party->address ?? old('address') }}">
-</div>
+
 <div class="input-holder">
   <label class="form-label" for="shopname">開催場所店名</label>
   <input class="form-input" type="text" name="shopname" required value="{{ $party->shopname ?? old('shopname') }}">
