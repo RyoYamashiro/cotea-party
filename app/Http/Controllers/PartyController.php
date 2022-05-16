@@ -17,9 +17,8 @@ class PartyController extends Controller
   }
   public function index()
   {
-    $parties = Party::all()->sortByDesc('created_at');
 
-    return view('parties.index', compact('parties'));
+    return view('parties.index');
   }
   public function create()
   {

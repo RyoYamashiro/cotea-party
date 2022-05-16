@@ -17,10 +17,8 @@
         <div class="title-wrapper">
           <h2 class="title">パーティー一覧</h2>
         </div>
-        <div class="article-wrapper">
-          @foreach($parties as $party)
-            @include('parts.article')
-          @endforeach
+        <div class="article-wrapper" id="article_list">
+
         </div>
       </section>
     </div>
