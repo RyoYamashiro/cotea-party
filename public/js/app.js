@@ -2320,12 +2320,13 @@ function SelectMap(_ref) {
   var handleApiLoaded = function handleApiLoaded(obj) {
     setMap(obj.map);
     setMaps(obj.maps);
+    console.log('map', map);
+    console.log('maps', maps);
     setGeocoder(new obj.maps.Geocoder());
     setMarker(new obj.maps.Marker({
-      map: map,
+      map: obj.map,
       position: latLng
     }));
-    map.panTo(latLng);
   };
 
   var search = function search() {
@@ -2372,6 +2373,7 @@ function SelectMap(_ref) {
       map: map,
       position: localeLatLng
     }));
+    console.log('map', map);
     map.panTo(localeLatLng);
     geocoder.geocode({
       'location': latLng

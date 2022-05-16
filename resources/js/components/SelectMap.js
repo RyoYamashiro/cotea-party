@@ -29,12 +29,13 @@ export default function SelectMap({addressValue}) {
   const handleApiLoaded = (obj) => {
     setMap(obj.map);
     setMaps(obj.maps);
+    console.log('map' ,map);
+    console.log('maps' ,maps);
     setGeocoder(new obj.maps.Geocoder());
     setMarker(new obj.maps.Marker({
-      map,
+      map: obj.map,
       position: latLng,
     }));
-    map.panTo(latLng);
   };
 
   const search = () => {
@@ -71,6 +72,7 @@ export default function SelectMap({addressValue}) {
       map,
       position: localeLatLng,
     }));
+    console.log('map', map);
     map.panTo(localeLatLng);
     geocoder.geocode({'location': latLng}, function(results, status) {
       console.log(results);
