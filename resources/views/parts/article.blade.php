@@ -1,7 +1,7 @@
 <article class="article">
   <div class="article-container">
     <h3 class="article-title"><a href="{{route('parties.show', compact('party'))}}">{{$party->title}}</a></h3>
-    <div class="article-map">
+    <div class="article-map" data-id="{{$party->id}}" data-lat="{{$party->lat}}" data-lng="{{$party->lng}}" id="show_map_{{$party->id}}">
     </div>
 
 
