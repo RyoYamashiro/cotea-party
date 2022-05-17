@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Article from './Article';
-import { Pagination } from '@mui/material';
 
 
 
@@ -26,15 +25,11 @@ function ArticleList() {
       {articles.map((article, index) => (
         <Article key={index} data={article} />
       ))}
-      <button value="0" onClick={clickChangeFilter}>1</button>
-      <button value="1" onClick={clickChangeFilter}>2</button>
-      <button value="2" onClick={clickChangeFilter}>3</button>
-      <Pagination
-      
-        count={document.getElementById('article_list').dataset.partyPageNumber}
-        onChange={(e, page) =>setFilter(page)}
-        color="standard"
-        />
+      {[...Array(Number(document.getElementById('article_list').dataset.partyPageNumber))].map((_ ,index) => (
+        <button key={index} value={index} onClick={clickChangeFilter}>{index + 1}</button>
+      ))}
+
+
       </>
     );
 }
