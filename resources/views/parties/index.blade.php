@@ -17,7 +17,7 @@
         <div class="title-wrapper">
           <h2 class="title">パーティー一覧</h2>
         </div>
-        <div class="article-wrapper" id="article_list">
+        <div class="article-wrapper" id="article_list" data-party-page-number="{{$partyPageNumber}}">
 
         </div>
       </section>

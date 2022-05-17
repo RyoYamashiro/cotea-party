@@ -18,7 +18,9 @@ class PartyController extends Controller
   public function index()
   {
 
-    return view('parties.index');
+    $totalPageNumber = Party::all()->count();
+    $partyPageNumber = floor($totalPageNumber/ 12);
+    return view('parties.index', compact('partyPageNumber'));
   }
   public function create()
   {

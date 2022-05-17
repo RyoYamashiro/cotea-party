@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Article from './Article';
+import { Pagination } from '@mui/material';
+
+
 
 function ArticleList() {
     const [articles, setArticles] = useState([]);
@@ -10,7 +13,7 @@ function ArticleList() {
 
     useEffect(() => {
     axios.get(`/api/${filter}`).
-          then(response => setArticles(response.data));
+          then(response => {setArticles(response.data); console.log(response.data)});
     }, [filter]);
 
     const clickChangeFilter = (e) => {
@@ -24,8 +27,14 @@ function ArticleList() {
         <Article key={index} data={article} />
       ))}
       <button value="0" onClick={clickChangeFilter}>1</button>
-      <button value="10" onClick={clickChangeFilter}>2</button>
-      <button value="20" onClick={clickChangeFilter}>3</button>
+      <button value="1" onClick={clickChangeFilter}>2</button>
+      <button value="2" onClick={clickChangeFilter}>3</button>
+      <Pagination
+      
+        count={document.getElementById('article_list').dataset.partyPageNumber}
+        onChange={(e, page) =>setFilter(page)}
+        color="standard"
+        />
       </>
     );
 }

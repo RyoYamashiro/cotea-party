@@ -2,7 +2,7 @@ function Article({data}) {
     return (
       <article className="article">
         <div className="article-container">
-          <h3 className="article-title"><a href="">{data.title}</a></h3>
+          <h3 className="article-title"><a href={'/parties/' + data.id}>{data.title}</a></h3>
           <div className="article-map">
           </div>
 
@@ -18,7 +18,7 @@ function Article({data}) {
                 <p className="article-date">{data.date}</p>
               </div>
 
-              <a className="article-button" href="">詳細を見る</a>
+              <a className="article-button" href={'/parties/' + data.id}>詳細を見る</a>
             </div>
           </div>
 

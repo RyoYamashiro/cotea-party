@@ -17,7 +17,7 @@ class PartiesController extends Controller
     public function index($index)
     {
       logger('indexapi'.$index);
-      $parties = Party::orderBy('created_at', 'DESC')->offset($index-1)->take(9)->get();
+      $parties = Party::orderBy('created_at', 'DESC')->offset($index*12)->take(12)->get();
       return $parties;
     }
 
