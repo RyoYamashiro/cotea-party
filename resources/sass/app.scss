@@ -454,8 +454,32 @@ img {
 
 }
 
+.paginate{
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin: $space_xl auto $space_3l;
+  &-link{
+    background: $sub-color;
+    padding: $space_l $space_xl;
+    font-weight: bold;
+    border-radius: $space_xxl;
+    font-size: $font-size_xl;
+    color: $main-color;
+    &:hover{
+      color: $main-color;
+      background: #53b567;
+    }
+    &-active{
+      background: $accent-color;
+      &:hover{
+        background: #ed749d;
+      }
+    }
+  }
 
 
+}
 
 .footer {
   position: absolute;

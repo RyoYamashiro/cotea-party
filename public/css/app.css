@@ -400,6 +400,31 @@ img {
   float: right;
 }
 
+.paginate {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  margin: 20px auto 40px;
+}
+.paginate-link {
+  background: #5ebf71;
+  padding: 15px 20px;
+  font-weight: bold;
+  border-radius: 30px;
+  font-size: 22px;
+  color: #fcfeff;
+}
+.paginate-link:hover {
+  color: #fcfeff;
+  background: #53b567;
+}
+.paginate-link-active {
+  background: #f77ea6;
+}
+.paginate-link-active:hover {
+  background: #ed749d;
+}
+
 .footer {
   position: absolute;
   bottom: 0;

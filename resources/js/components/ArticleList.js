@@ -2,33 +2,51 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Article from './Article';
+import ReactPaginate from 'react-paginate';
 
 
 
 function ArticleList() {
     const [articles, setArticles] = useState([]);
-    const [filter, setFilter] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
 
 
     useEffect(() => {
-    axios.get(`/api/${filter}`).
-          then(response => {setArticles(response.data); console.log(response.data)});
-    }, [filter]);
+    axios.get(`/api/${currentPage}`).
+          then(response => setArticles(response.data));
+    }, [currentPage]);
 
-    const clickChangeFilter = (e) => {
-      e.preventDefault;
-      console.log(e);
-      setFilter(e.target.value)
+
+      const element = document.getElementById('article_list');
+      const totalPaginationButtonNumber = Number(element.dataset.partyPageNumber);
+
+    const handlePaginate = (selectedPage) => {
+      const page = selectedPage.selected;
+      setCurrentPage(page);
     }
     return (
       <>
-      {articles.map((article, index) => (
-        <Article key={index} data={article} />
-      ))}
-      {[...Array(Number(document.getElementById('article_list').dataset.partyPageNumber))].map((_ ,index) => (
-        <button key={index} value={index} onClick={clickChangeFilter}>{index + 1}</button>
-      ))}
+        {articles.map((article, index) => (
+          <Article key={index} data={article} />
+        ))}
+        <ReactPaginate
+           forcePage={currentPage}
 
+           nextLabel="＞"
+           onPageChange={handlePaginate}
+           pageCount={totalPaginationButtonNumber}
+           pageRangeDisplayed={2}
+           marginPagesDisplayed={2}
+           previousLabel="＜"
+           renderOnZeroPageCount={null}
+           containerClassName="paginate"
+           pageLinkClassName="paginate-link"
+           activeClassName="pagenate-item-active"
+           activeLinkClassName="paginate-link-active"
+           breakLinkClassName="paginate-link"
+           previousLinkClassName="paginate-link"
+           nextLinkClassName="paginate-link"
+         />
 
       </>
     );

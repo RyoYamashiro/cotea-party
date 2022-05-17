@@ -19,7 +19,7 @@ class PartyController extends Controller
   {
 
     $totalPageNumber = Party::all()->count();
-    $partyPageNumber = floor($totalPageNumber/ 12);
+    $partyPageNumber = ceil($totalPageNumber/ 12);
     return view('parties.index', compact('partyPageNumber'));
   }
   public function create()
