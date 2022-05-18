@@ -387,9 +387,26 @@ img {
   height: 400px;
   border-radius: 20px;
   width: 500px;
+  position: relative;
 }
 .party-middle-map.edit {
   width: 100%;
+}
+.party-middle-map .reset-button {
+  border: none;
+  background: #5ebf71;
+  color: #fcfeff;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.party-middle-map .reset-button:hover {
+  color: #fcfeff;
+  transition: 0.3s;
+  background: #53b567;
 }
 .party-bottom {
   padding-top: 15px;
@@ -422,7 +439,7 @@ img {
   background: #f77ea6;
 }
 .paginate-link-active:hover {
-  background: #ed749d;
+  background: #f77ea6;
 }
 
 .footer {

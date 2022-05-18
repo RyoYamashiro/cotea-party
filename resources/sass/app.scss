@@ -437,8 +437,25 @@ img {
       height: 400px;
       border-radius: $space_xl;
       width: 500px;
+      position: relative;
       &.edit{
         width: 100%;
+      }
+      .reset-button{
+        border: none;
+        background: $sub-color;
+        color: $main-color;
+        padding: $space_m;
+        border-radius: $space_m;
+        transition: .3s;
+        position: absolute;
+        top: $space_m;
+        left: $space_m;
+        &:hover{
+          color: $main-color;
+          transition: .3s;
+          background: #53b567;
+        }
       }
     }
   }
@@ -473,7 +490,7 @@ img {
     &-active{
       background: $accent-color;
       &:hover{
-        background: #ed749d;
+        background: $accent-color;
       }
     }
   }

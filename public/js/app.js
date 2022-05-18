@@ -2436,7 +2436,6 @@ function SelectMap(_ref) {
     lat: (_Number = Number(element.dataset.lat)) !== null && _Number !== void 0 ? _Number : 34.85658728,
     lng: (_Number2 = Number(element.dataset.lng)) !== null && _Number2 !== void 0 ? _Number2 : 135.9412302
   };
-  console.log(defaultLatLng);
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
@@ -2487,27 +2486,6 @@ function SelectMap(_ref) {
     }));
   };
 
-  var search = function search() {
-    geocoder.geocode({
-      mapAddress: mapAddress
-    }, function (results, status) {
-      if (status === maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-
-        if (marker) {
-          marker.setMap(null);
-        }
-
-        setMarker(new maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        }));
-        console.log(results[0].geometry.location.lat());
-        console.log(results[0].geometry.location.lng());
-      }
-    });
-  };
-
   var updateLatLng = function updateLatLng(_ref2) {
     var x = _ref2.x,
         y = _ref2.y,
@@ -2540,29 +2518,6 @@ function SelectMap(_ref) {
       setAddress(results[0].formatted_address.replace(/日本、, /, ''));
     });
   };
-
-  function geocodeLatLng(callback) {
-    geocoder.geocode({
-      'location': latLng
-    }, function (results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-        if (results[1]) {
-          callback(results);
-        } else {
-          alert('No results found');
-        }
-      } else {
-        alert('Geocoder failed due to: ' + status);
-      }
-    });
-  }
-
-  function getPreName(geoCodeResults) {
-    var results = geoCodeResults[0].address_components.filter(function (component) {
-      return component.types.indexOf("administrative_area_level_1") > -1;
-    });
-    console.log(results[0].long_name);
-  }
 
   function handleChangeAddress(e) {
     setAddress(e.target.value);
@@ -2598,17 +2553,6 @@ function SelectMap(_ref) {
             type: "hidden",
             name: "lng",
             value: latLng.lng
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "text",
-              onChange: function onChange(e) {
-                return setMapAddress(e.target.value);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-              type: "button",
-              onClick: search,
-              children: "Search"
-            })]
           })]
         })
       })]
@@ -2672,8 +2616,14 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+function ShowMap(_ref) {
+  var addressValue = _ref.addressValue;
+  var element = document.getElementById('show_map');
+  var defaultLatLng = {
+    lat: Number(element.dataset.lat),
+    lng: Number(element.dataset.lng)
+  };
 
-function ShowMap(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState2 = _slicedToArray(_useState, 2),
       map = _useState2[0],
@@ -2686,143 +2636,45 @@ function ShowMap(props) {
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
       _useState6 = _slicedToArray(_useState5, 2),
-      geocoder = _useState6[0],
-      setGeocoder = _useState6[1];
+      marker = _useState6[0],
+      setMarker = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultLatLng),
       _useState8 = _slicedToArray(_useState7, 2),
-      address = _useState8[0],
-      setAddress = _useState8[1];
-
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-      _useState10 = _slicedToArray(_useState9, 2),
-      marker = _useState10[0],
-      setMarker = _useState10[1];
-
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    lat: props.lat,
-    lng: props.lng
-  }),
-      _useState12 = _slicedToArray(_useState11, 2),
-      latLng = _useState12[0],
-      setLatLng = _useState12[1];
+      latLng = _useState8[0],
+      setLatLng = _useState8[1];
 
   var handleApiLoaded = function handleApiLoaded(obj) {
     setMap(obj.map);
     setMaps(obj.maps);
-    setGeocoder(new obj.maps.Geocoder());
-  };
-
-  var search = function search() {
-    geocoder.geocode({
-      address: address
-    }, function (results, status) {
-      if (status === maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-
-        if (marker) {
-          marker.setMap(null);
-        }
-
-        setMarker(new maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-        }));
-        console.log(results[0].geometry.location.lat());
-        console.log(results[0].geometry.location.lng());
-      }
-    });
-  };
-
-  var updateLatLng = function updateLatLng(_ref) {
-    var x = _ref.x,
-        y = _ref.y,
-        lat = _ref.lat,
-        lng = _ref.lng,
-        event = _ref.event;
-
-    if (marker) {
-      marker.setMap(null);
-    }
-
-    var localeLatLng = {
-      lat: lat,
-      lng: lng
-    };
-    console.log(localeLatLng);
-    setLatLng(localeLatLng);
-    setMarker(new maps.Marker({
-      map: map,
-      position: localeLatLng
+    console.log('map', map);
+    console.log('maps', maps);
+    setMarker(new obj.maps.Marker({
+      map: obj.map,
+      position: latLng
     }));
-    map.panTo(localeLatLng);
   };
 
-  var postLatLng = function postLatLng() {
-    console.log(latLng.lat);
-    axios__WEBPACK_IMPORTED_MODULE_3___default().post('/react', {
-      lat: latLng.lat,
-      lng: latLng.lng
-    }).then(function (response) {
-      console.log(response);
-      geocodeLatLng(getPreName);
-    })["catch"](function (error) {
-      console.log(error);
-    });
-  };
-
-  function geocodeLatLng(callback) {
-    geocoder.geocode({
-      'location': latLng
-    }, function (results, status) {
-      if (status === google.maps.GeocoderStatus.OK) {
-        if (results[1]) {
-          callback(results);
-        } else {
-          alert('No results found');
-        }
-      } else {
-        alert('Geocoder failed due to: ' + status);
-      }
-    });
+  function clickResetCenter() {
+    map.panTo(latLng);
   }
 
-  function getPreName(geoCodeResults) {
-    var results = geoCodeResults[0].address_components.filter(function (component) {
-      return component.types.indexOf("administrative_area_level_1") > -1;
-    });
-    console.log(results[0].long_name);
-  }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-        type: "text",
-        onChange: function onChange(e) {
-          return setAddress(e.target.value);
-        }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        type: "button",
-        onClick: search,
-        children: "Search"
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      style: {
-        height: '100vh',
-        width: '100%'
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    style: {
+      height: '100%',
+      width: '100%'
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(google_map_react__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      bootstrapURLKeys: {
+        key: 'AIzaSyDvHEWKY9pxVogqT3aW1o6IQxXQJupV-wA'
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(google_map_react__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        bootstrapURLKeys: {
-          key: 'AIzaSyDvHEWKY9pxVogqT3aW1o6IQxXQJupV-wA'
-        },
-        defaultCenter: latLng,
-        defaultZoom: 16,
-        onGoogleApiLoaded: handleApiLoaded,
-        onClick: updateLatLng
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-        onClick: postLatLng,
-        children: "\u8A66\u3057"
-      })]
+      defaultCenter: defaultLatLng,
+      defaultZoom: 17,
+      onGoogleApiLoaded: handleApiLoaded
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+      className: "reset-button",
+      onClick: clickResetCenter,
+      children: "\u958B\u50AC\u5730\u306B\u623B\u308B"
     })]
   });
 }

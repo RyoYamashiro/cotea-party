@@ -4,114 +4,47 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-export default function ShowMap(props) {
+export default function ShowMap({addressValue}) {
+  const element = document.getElementById('show_map');
+  const defaultLatLng = {
+    lat: Number(element.dataset.lat),
+    lng: Number(element.dataset.lng),
+  }
+
+
+
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
-  const [geocoder, setGeocoder] = useState(null);
-  const [address, setAddress] = useState(null);
   const [marker, setMarker] = useState(null);
-  const [latLng, setLatLng] = useState({
-    lat: props.lat,
-    lng: props.lng,
-  })
-
+  const [latLng, setLatLng] = useState(defaultLatLng);
 
 
   const handleApiLoaded = (obj) => {
     setMap(obj.map);
     setMaps(obj.maps);
-    setGeocoder(new obj.maps.Geocoder());
-  };
-
-  const search = () => {
-    geocoder.geocode({
-      address,
-    }, (results, status) => {
-      if (status === maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        if (marker) {
-          marker.setMap(null);
-        }
-        setMarker(new maps.Marker({
-          map,
-          position: results[0].geometry.location,
-        }));
-        console.log(results[0].geometry.location.lat());
-        console.log(results[0].geometry.location.lng());
-      }
-    });
-  };
-  const updateLatLng = ({ x, y, lat, lng, event }) => {
-    if (marker) {
-      marker.setMap(null);
-    }
-    const localeLatLng = {
-      lat,
-      lng,
-    };
-    console.log(localeLatLng);
-    setLatLng(localeLatLng);
-    setMarker(new maps.Marker({
-      map,
-      position: localeLatLng,
+    console.log('map' ,map);
+    console.log('maps' ,maps);
+    setMarker(new obj.maps.Marker({
+      map: obj.map,
+      position: latLng,
     }));
-    map.panTo(localeLatLng);
   };
 
-  const postLatLng = () => {
-    console.log(latLng.lat);
-    axios.post('/react', {
-      lat: latLng.lat,
-      lng: latLng.lng,
-    })
-    .then(function (response) {
-      console.log(response);
-      geocodeLatLng(getPreName);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-  function geocodeLatLng(callback) {
 
-        geocoder.geocode({'location': latLng}, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    callback(results);
-                } else {
-                    alert('No results found');
-                }
-            } else {
-                alert('Geocoder failed due to: ' + status);
-            }
-        });
-    }
 
-  function getPreName(geoCodeResults)
-  {
-      var results = geoCodeResults[0].address_components.filter(function(component) {
-        return component.types.indexOf("administrative_area_level_1") > -1;
-      });
-      console.log(results[0].long_name);
+  function clickResetCenter(){
+    map.panTo(latLng);
   }
   return (
-    <>
-
-    <div>
-      <input type="text" onChange={(e) => setAddress(e.target.value)} />
-      <button type="button" onClick={search}>Search</button>
-    </div>
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div style={{ height: '100%', width: '100%'}}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDvHEWKY9pxVogqT3aW1o6IQxXQJupV-wA' }}
-        defaultCenter={latLng}
-        defaultZoom={16}
+        defaultCenter={defaultLatLng}
+        defaultZoom={17}
         onGoogleApiLoaded={handleApiLoaded}
-        onClick={updateLatLng}
       />
-      <button onClick={postLatLng}>試し</button>
+      <button className="reset-button" onClick={clickResetCenter}>開催地に戻る</button>
     </div>
-    </>
   )
 }
 if (document.getElementById('show_map')) {

@@ -15,7 +15,6 @@ export default function SelectMap({addressValue}) {
 
 
 
-  console.log(defaultLatLng);
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
   const [geocoder, setGeocoder] = useState(null);
@@ -38,24 +37,7 @@ export default function SelectMap({addressValue}) {
     }));
   };
 
-  const search = () => {
-    geocoder.geocode({
-      mapAddress,
-    }, (results, status) => {
-      if (status === maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        if (marker) {
-          marker.setMap(null);
-        }
-        setMarker(new maps.Marker({
-          map,
-          position: results[0].geometry.location,
-        }));
-        console.log(results[0].geometry.location.lat());
-        console.log(results[0].geometry.location.lng());
-      }
-    });
-  };
+
   const updateLatLng = ({ x, y, lat, lng, event }) => {
     if (marker) {
       marker.setMap(null);
@@ -82,28 +64,7 @@ export default function SelectMap({addressValue}) {
   };
 
 
-  function geocodeLatLng(callback) {
 
-        geocoder.geocode({'location': latLng}, function(results, status) {
-            if (status === google.maps.GeocoderStatus.OK) {
-                if (results[1]) {
-                    callback(results);
-                } else {
-                    alert('No results found');
-                }
-            } else {
-                alert('Geocoder failed due to: ' + status);
-            }
-        });
-    }
-
-  function getPreName(geoCodeResults)
-  {
-      var results = geoCodeResults[0].address_components.filter(function(component) {
-        return component.types.indexOf("administrative_area_level_1") > -1;
-      });
-      console.log(results[0].long_name);
-  }
   function handleChangeAddress(e)
   {
     setAddress(e.target.value)
@@ -126,10 +87,6 @@ export default function SelectMap({addressValue}) {
             <input type="hidden" name="lat" value={latLng.lat} />
             <input type="hidden" name="lng" value={latLng.lng} />
 
-            <div>
-              <input type="text" onChange={(e) => setMapAddress(e.target.value)} />
-              <button type="button" onClick={search}>Search</button>
-            </div>
           </div>
         </div>
       </div>
