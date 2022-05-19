@@ -18,9 +18,6 @@ Route::resource('/parties', 'PartyController')->only(['show']);
 Route::get('/mypage', function(){
   return view('mypage');
 });
-Route::get('/{any}', function(){
-    return view('App');
-})->where('any', '.*');
 
 Route::get('/party/1', function(){
   return view('parties.party');

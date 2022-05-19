@@ -26,6 +26,15 @@
         <a class="menu-link" href="{{route('parties.create')}}">投稿</a>
       </li>
       @endauth
+
+      @auth
+      <li class="menu-item">
+        <form class="" action="{{route('logout')}}" method="post">
+          @csrf
+          <input class="menu-link logout-button" type="submit" value="ログアウト">
+        </form>
+      </li>
+      @endauth
     </ul>
   </nav>
 </header>

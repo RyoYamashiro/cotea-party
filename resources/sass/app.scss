@@ -112,6 +112,17 @@ img {
   }
   &-link {
     -webkit-font-smoothing: initial;
+    margin-left: $space_xl;
+    &.logout-button{
+      border:none;
+      background: none;
+      font-size: $font-size_xl;
+      font-family: $font-family_theme;
+      color: $base-color;
+      &:hover{
+        color: $sub-color;
+      }
+    }
   }
   @include mq() {
     display: block;
@@ -474,7 +485,7 @@ img {
 .paginate{
   display: flex;
   justify-content: space-between;
-  width: 600px;
+  min-width: 600px;
   margin: $space_xl auto $space_3l;
   &-link{
     background: $sub-color;

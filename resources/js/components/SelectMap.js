@@ -7,9 +7,10 @@ import axios from 'axios';
 export default function SelectMap({addressValue}) {
   const element = document.getElementById('select_map');
   const defaultAddress = element.dataset.address;
+
   const defaultLatLng = {
-    lat: Number(element.dataset.lat) ?? 34.85658728,
-    lng: Number(element.dataset.lng) ?? 135.9412302,
+    lat: Number(element.dataset.lat) ? Number(element.dataset.lat)  : 35.68123091,
+    lng: Number(element.dataset.lng) ? Number(element.dataset.lat) :  139.7671708,
   }
 
 
@@ -22,19 +23,18 @@ export default function SelectMap({addressValue}) {
   const [marker, setMarker] = useState(null);
   const [latLng, setLatLng] = useState(defaultLatLng);
 
-  console.log(addressValue);
   const [address, setAddress] = useState(defaultAddress);
 
   const handleApiLoaded = (obj) => {
     setMap(obj.map);
     setMaps(obj.maps);
-    console.log('map' ,map);
-    console.log('maps' ,maps);
     setGeocoder(new obj.maps.Geocoder());
-    setMarker(new obj.maps.Marker({
-      map: obj.map,
-      position: latLng,
-    }));
+    if(element.dataset.lat ?? element.dataset.lng){
+      setMarker(new obj.maps.Marker({
+        map: obj.map,
+        position: latLng,
+      }));
+    }
   };
 
 
@@ -48,16 +48,13 @@ export default function SelectMap({addressValue}) {
       lat,
       lng,
     };
-    console.log(localeLatLng);
     setLatLng(localeLatLng);
     setMarker(new maps.Marker({
       map,
       position: localeLatLng,
     }));
-    console.log('map', map);
     map.panTo(localeLatLng);
     geocoder.geocode({'location': latLng}, function(results, status) {
-      console.log(results);
       setAddress(results[0].formatted_address.replace(/日本、, /, ''));
 
     });

@@ -52,7 +52,6 @@
             </tr>
           </tbody>
         </table>
-        <a class="profile-button" href="{{route('logout')}}">ログアウト</a>
         <a class="profile-button" href="/profileEdit">プロフィール編集</a>
       </section>
 
@@ -61,7 +60,6 @@
           <h2 class="title">投稿済パーティー</h2>
         </div>
         <div class="article-wrapper">
-          @include('parts.article')
         </div>
       </section>
 
@@ -70,7 +68,6 @@
           <h2 class="title">参加予定パーティー</h2>
         </div>
         <div class="article-wrapper">
-          @include('parts.article')
         </div>
       </section>
 
@@ -79,7 +76,6 @@
           <h2 class="title">申請中パーティー</h2>
         </div>
         <div class="article-wrapper">
-          @include('parts.article')
         </div>
       </section>
 

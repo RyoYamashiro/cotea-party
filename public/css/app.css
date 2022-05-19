@@ -74,6 +74,17 @@ img {
 }
 .menu-link {
   -webkit-font-smoothing: initial;
+  margin-left: 20px;
+}
+.menu-link.logout-button {
+  border: none;
+  background: none;
+  font-size: 22px;
+  font-family: "Kaisei HarunoUmi", serif;
+  color: #ebb97c;
+}
+.menu-link.logout-button:hover {
+  color: #5ebf71;
 }
 @media screen and (max-width: 414px) {
   .menu {
@@ -420,7 +431,7 @@ img {
 .paginate {
   display: flex;
   justify-content: space-between;
-  width: 600px;
+  min-width: 600px;
   margin: 20px auto 40px;
 }
 .paginate-link {
