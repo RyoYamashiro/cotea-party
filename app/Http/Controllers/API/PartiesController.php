@@ -16,11 +16,14 @@ class PartiesController extends Controller
      */
     public function index($index)
     {
-      logger('indexapi'.$index);
       $parties = Party::orderBy('created_at', 'DESC')->offset($index*12)->take(12)->get();
       return $parties;
     }
-
+    public function getPostedParties($index)
+    {
+      $parties = Party::where('user_id', auth()->id())->orderBy('created_at', 'DESC')->offset($index*3)->take(3)->get();
+      return $parties;
+    }
     /**
      * Store a newly created resource in storage.
      *

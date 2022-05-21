@@ -33,6 +33,7 @@ export default function ShowMap({addressValue}) {
 
 
   function clickResetCenter(){
+    map.setZoom(17);
     map.panTo(latLng);
   }
   return (

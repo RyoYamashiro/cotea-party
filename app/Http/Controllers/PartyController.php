@@ -42,6 +42,7 @@ class PartyController extends Controller
   public function edit(Party $party)
   {
     $date = $party->date->format('Y-m-d\TH:i');
+    logger($date);
     return view('parties.edit', compact('party', 'date'));
   }
   public function update(PartyRequest $request, Party $party)

@@ -28,7 +28,7 @@ function Article({data}) {
       map: obj.map,
       position: latLng,
     }));
-    map.setOptions({
+    obj.map.setOptions({
       zoomControl: false,
       fullscreenControl: false,
       keyboardShortcuts: false,
