@@ -36,6 +36,8 @@ function Article({data}) {
       draggable: false,
     })
   };
+
+  var sliceContent = data.content.length > 20 ? data.content.slice(0,20)+"…" : data.content;
     return (
       <article className="article">
         <div className="article-container">
@@ -52,7 +54,7 @@ function Article({data}) {
 
 
           <div className="article-content">
-            <p className="article-text">{data.content}</p>
+            <p className="article-text">{sliceContent}</p>
             <div className="article-bottom">
 
 

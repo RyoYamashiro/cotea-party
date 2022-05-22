@@ -51,7 +51,7 @@
           <div class="party-item">
             <p class="party-item-title">パーティー詳細説明</p>
             <p class="party-item-content">
-              {{$party->content}}
+              {!! nl2br(e($party->content)) !!}
             </p>
             <div class="host-holder">
               <div class="party-item">

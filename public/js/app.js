@@ -2264,6 +2264,7 @@ function Article(_ref) {
     });
   };
 
+  var sliceContent = data.content.length > 20 ? data.content.slice(0, 20) + "…" : data.content;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("article", {
     className: "article",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -2288,7 +2289,7 @@ function Article(_ref) {
         className: "article-content",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           className: "article-text",
-          children: data.content
+          children: sliceContent
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "article-bottom",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {

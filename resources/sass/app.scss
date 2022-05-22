@@ -221,22 +221,24 @@ img {
   }
   &-title{
     text-align: center;
-    padding: $space_m;
+    padding: $space_s $space_m;
     font-size: $font-size_xl;
     font-weight: bold;
     font-family: $font-family_theme;
   }
   &-map{
-    height: 45%;
+    height: 40%;
     background: $sub-color;
   }
   &-content{
-    padding: $space_l;
+    padding: $space_m $space_l;
+    box-sizing: border-box;
     width: 100%;
+    white-space: pre-wrap;
   }
   &-date{
     font-family: $font-family_theme;
-    font-size: $font-size_xl;
+    font-size: $font-size_l;
     line-height: 0.93;
   }
   &-bottom{
