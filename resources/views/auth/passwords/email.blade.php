@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'パスワード再設定')
+@section('title', 'パスワード再設定用メール送信')
 
 @section('content')
   <div class="wrapper">
@@ -18,6 +18,11 @@
             <label class="form-label" for="email">メールアドレス</label>
             <input class="form-input" type="text" name="email" required value="">
           </div>
+          @if ($errors->has('email'))
+          <p class="error-msg">
+              {{$errors->first('email')}}
+          </p>
+          @endif
           <div class="button-holder">
             <button class="form-button" type="submit">メール送信</button>
           </div>

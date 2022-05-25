@@ -30,6 +30,8 @@ class UserRequest extends FormRequest
         return [
           'name' => ['required', 'max:50', 'unique:users,name,'.Auth::id().',id'],
           'email' => ['required', 'email', 'max:100', 'unique:users,email,'.Auth::id().',id'],
+          'gender' => ['required'],
+
           'password' => 'confirmed', 'max:100', 'min:8',
           'password_confirmation' => 'same:password'
 

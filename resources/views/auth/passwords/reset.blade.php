@@ -20,11 +20,21 @@
             <label class="form-label" for="email">メールアドレス</label>
             <input class="form-input" type="text" name="email" required value="{{$email ?? old('email')}}">
           </div>
+          @if ($errors->has('email'))
+          <p class="error-msg">
+              {{$errors->first('email')}}
+          </p>
+          @endif
 
           <div class="input-holder">
             <label class="form-label" for="password">新パスワード</label>
             <input class="form-input" type="password" name="password" required value="">
           </div>
+          @if ($errors->has('password'))
+          <p class="error-msg">
+              {{$errors->first('password')}}
+          </p>
+          @endif
 
           <div class="input-holder">
             <label class="form-label" for="password_confirmation">新パスワード（再入力）</label>
