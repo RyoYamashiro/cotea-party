@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\ResetPasswordNotification;
 
 class User extends Authenticatable
 {
@@ -15,9 +16,22 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'self_introduction', 'gender', 'birthday', 'password'
     ];
+
+    private static $setGender = [
+        null => '--', 0 => '男', 1 => '女'
+    ];
+    public function getGender()
+    {
+      return self::$setGender[$this->gender];
+    }
+
+
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +50,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+      * パスワードリセット通知の送信
+      *
+      * @param  string  $token
+      * @return void
+      */
+    public function sendPasswordResetNotification($token)
+    {
+      logger('$token:'.$token);
+      $this->notify(new ResetPasswordNotification($token));
+    }
 }

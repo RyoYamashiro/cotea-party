@@ -9,8 +9,8 @@ export default function SelectMap({addressValue}) {
   const defaultAddress = element.dataset.address;
 
   const defaultLatLng = {
-    lat: Number(element.dataset.lat) ?? 35.68123091,
-    lng: Number(element.dataset.lng) ??  139.7671708,
+    lat: Number(element.dataset.lat) ? Number(element.dataset.lat): 35.68123091,
+    lng: Number(element.dataset.lng) ? Number(element.dataset.lat):  139.7671708,
   }
 
 

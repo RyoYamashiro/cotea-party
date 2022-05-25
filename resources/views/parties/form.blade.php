@@ -1,8 +1,5 @@
 @csrf
 
-<div class="title-wrapper">
-  <h2 class="title">パーティー投稿作成</h2>
-</div>
 
 <div class="input-holder">
   <label class="form-label" for="title">タイトル</label>
@@ -11,7 +8,7 @@
 
 <div class="input-holder">
   <label class="form-label" for="date">開催日時</label>
-  <input class="form-input" type="datetime-local" name="date" required value="{{ date('Y-m-d\TH:i', strtotime($party->date)) ?? old('date') }}">
+  <input class="form-input" type="datetime-local" name="date" required value="{{$party ? date('Y-m-d\TH:i', strtotime($party->date)) : old('date') }}">
 </div>
 
 <div id="select_map" data-address="{{ $party->address ?? old('address') }}" data-lat="{{ $party->lat ?? null  }}" data-lng="{{ $party->lng ?? null }}">

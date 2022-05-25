@@ -2499,14 +2499,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SelectMap(_ref) {
-  var _Number, _Number2;
-
   var addressValue = _ref.addressValue;
   var element = document.getElementById('select_map');
   var defaultAddress = element.dataset.address;
   var defaultLatLng = {
-    lat: (_Number = Number(element.dataset.lat)) !== null && _Number !== void 0 ? _Number : 35.68123091,
-    lng: (_Number2 = Number(element.dataset.lng)) !== null && _Number2 !== void 0 ? _Number2 : 139.7671708
+    lat: Number(element.dataset.lat) ? Number(element.dataset.lat) : 35.68123091,
+    lng: Number(element.dataset.lng) ? Number(element.dataset.lat) : 139.7671708
   };
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),

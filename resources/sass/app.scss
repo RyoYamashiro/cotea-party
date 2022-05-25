@@ -101,6 +101,15 @@ img {
     height: 100%;
   }
 }
+.flash_message{
+  width: 100%;
+  background: $sub-color;
+  padding: $space_s;
+  position: absolute;
+  top:84px;
+  text-align: center;
+  font-size: $font-size_l;
+}
 
 .menu {
   display: flex;
@@ -311,17 +320,18 @@ img {
     .error {
       border: 5px $accent-color solid;
     }
+
   }
   .button-holder{
     text-align: center;
   }
   &-button{
-    width: 130px;
+    display: inline-block;
     margin: $space_xxl auto 0;
     border: none;
     background: $sub-color;
     color: $main-color;
-    padding: $space_l;
+    padding: $space_l $space_xxl;
     border-radius: $space_l;
     transition: .3s;
     font-size: $font-size_xl;

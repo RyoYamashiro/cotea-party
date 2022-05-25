@@ -63,6 +63,16 @@ img {
   height: 100%;
 }
 
+.flash_message {
+  width: 100%;
+  background: #5ebf71;
+  padding: 5px;
+  position: absolute;
+  top: 84px;
+  text-align: center;
+  font-size: 18px;
+}
+
 .menu {
   display: flex;
   align-items: center;
@@ -272,12 +282,12 @@ img {
   text-align: center;
 }
 .form-button {
-  width: 130px;
+  display: inline-block;
   margin: 30px auto 0;
   border: none;
   background: #5ebf71;
   color: #fcfeff;
-  padding: 15px;
+  padding: 15px 30px;
   border-radius: 15px;
   transition: 0.3s;
   font-size: 22px;

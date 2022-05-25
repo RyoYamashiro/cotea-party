@@ -42,6 +42,7 @@
 
         <input type="hidden" name="remember" id="remember" value="on">
 
+        <a href="{{ route('password.request') }}" class="card-text">パスワードを忘れた方</a>
 
         <div class="button-holder">
           <button class="form-button" type="submit">ログイン</button>

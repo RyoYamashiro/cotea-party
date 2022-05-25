@@ -56,7 +56,7 @@
             <div class="host-holder">
               <div class="party-item">
                 <p class="party-item-title">主催者</p>
-                <p class="party-item-content">{{$party->user->name}}</p>
+                <p class="party-item-content"><a href="{{route('users.show', $party->user->name)}}">{{$party->user->name}}</a></p>
               </div>
             </div>
           </div>

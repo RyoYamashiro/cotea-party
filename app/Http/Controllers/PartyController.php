@@ -24,7 +24,8 @@ class PartyController extends Controller
   }
   public function create()
   {
-    return view('parties.create');
+    $party = null;
+    return view('parties.create', compact('party'));
   }
   public function store(PartyRequest $request, Party $party)
   {

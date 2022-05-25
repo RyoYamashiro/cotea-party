@@ -1,6 +1,10 @@
+@if(session('flash_message'))
+  <div class="flash_message">
+    {{session('flash_message')}}
+  </div>
+@endif
 <header class="header">
   <h1 class="header-logo"><a href="{{route('parties.index')}}">コーティー<br>パーティー</a></h1>
-
   <nav class="nav-menu">
     <ul class="menu">
       @guest
@@ -17,7 +21,7 @@
 
       @auth
       <li class="menu-item">
-        <a class="menu-link" href="/mypage">マイページ</a>
+        <a class="menu-link" href='{{ route("users.show", ["name" => Auth::user()->name]) }}'">マイページ</a>
       </li>
       @endauth
 
@@ -37,4 +41,6 @@
       @endauth
     </ul>
   </nav>
+
+
 </header>
