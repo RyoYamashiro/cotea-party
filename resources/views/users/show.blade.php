@@ -54,10 +54,12 @@
             </tr>
           </tbody>
         </table>
-        <a class="profile-button" href="{{route('users.edit', $user->name)}}">プロフィール編集</a>
+
+        <div class="profile-button-wrapper">
+          <a class="profile-button" href="{{route('users.edit', $user->name)}}">プロフィール編集</a>
+        </div>
         @else
         <table class="profile-table">
-
           <thead class="thead">
             <tr>
               <td class="thead-first-table-data">

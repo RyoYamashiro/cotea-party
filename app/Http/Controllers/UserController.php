@@ -78,6 +78,5 @@ class UserController extends Controller
 
       return redirect()->route('users.show', $user->name)
           ->with('flash_message','パスワードの変更が終了しました');
-
   }
 }

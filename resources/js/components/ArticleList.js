@@ -12,7 +12,7 @@ function ArticleList() {
 
 
     useEffect(() => {
-    axios.get(`/api/${currentPage}`).
+    axios.get(`/api/parties/${currentPage}`).
           then(response => setArticles(response.data));
     }, [currentPage]);
 

@@ -16,3 +16,4 @@ require('./components/Example');
 require('./components/SelectMap');
 require('./components/ShowMap');
 require('./components/ArticleList');
+require('./components/SubscribeStatusButton');

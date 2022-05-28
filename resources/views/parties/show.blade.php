@@ -59,6 +59,8 @@
                 <p class="party-item-content"><a href="{{route('users.show', $party->user->name)}}">{{$party->user->name}}</a></p>
               </div>
             </div>
+            <div id="subscribe_status_button" data-user="{{auth()->user()->id}}" data-party="{{$party->id}}">
+            </div>
           </div>
         </div>
       </div>

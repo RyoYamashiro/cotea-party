@@ -23,4 +23,7 @@ class Party extends Model
   {
       return $this->belongsTo('App\User');
   }
+  public function subscribesToParty() {
+    return $this->hasMany('App\Subscribe','party_id');
+  }
 }

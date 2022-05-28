@@ -372,6 +372,7 @@ img {
 
 .profile-button {
   background: #5ebf71;
+  display: inline-block;
   color: #fcfeff;
   padding: 15px;
   border-radius: 15px;
@@ -382,6 +383,10 @@ img {
   transition: 0.3s;
   background: #53b567;
   transform: translateY(-1px);
+}
+.profile-button-wrapper {
+  text-align: right;
+  margin-top: 10px;
 }
 
 .party-top {
@@ -406,6 +411,7 @@ img {
   transition: 0.3s;
   font-size: 22px;
   display: inline-block;
+  border: none;
 }
 .party-button:hover {
   color: #fcfeff;

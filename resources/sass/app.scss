@@ -435,15 +435,21 @@ img {
 }
 .profile-button{
   background: $sub-color;
+  display: inline-block;
   color: $main-color;
   padding: $space_l;
   border-radius: $space_l;
   transition: .3s;
+
   &:hover{
     color: $main-color;
     transition: .3s;
     background: #53b567;
     transform: translateY(-1px);
+  }
+  &-wrapper{
+    text-align: right;
+    margin-top: $space_m;
   }
 }
 
@@ -473,6 +479,7 @@ img {
     transition: .3s;
     font-size: $font-size_xl;
     display: inline-block;
+    border: none;
     &:hover{
       color: $main-color;
       transition: .3s;

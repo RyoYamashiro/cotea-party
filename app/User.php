@@ -61,4 +61,8 @@ class User extends Authenticatable
       logger('$token:'.$token);
       $this->notify(new ResetPasswordNotification($token));
     }
+
+    public function subscribesToUser() {
+      return $this->hasMany('App\Subscribe','user_id');
+    }
 }

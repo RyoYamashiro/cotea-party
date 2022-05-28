@@ -2138,6 +2138,8 @@ __webpack_require__(/*! ./components/ShowMap */ "./resources/js/components/ShowM
 
 __webpack_require__(/*! ./components/ArticleList */ "./resources/js/components/ArticleList.js");
 
+__webpack_require__(/*! ./components/SubscribeStatusButton */ "./resources/js/components/SubscribeStatusButton.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -2367,7 +2369,7 @@ function ArticleList() {
       setCurrentPage = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/".concat(currentPage)).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/parties/".concat(currentPage)).then(function (response) {
       return setArticles(response.data);
     });
   }, [currentPage]);
@@ -2750,6 +2752,144 @@ function ShowMap(_ref) {
 
 if (document.getElementById('show_map')) {
   react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(ShowMap, {}), document.getElementById('show_map'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/SubscribeStatusButton.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/SubscribeStatusButton.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SubscribeStatusButton)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var initialState = {
+  status: 1,
+  buttonText: 'キャンセル'
+};
+
+var statusReducer = function statusReducer(state, action) {
+  switch (action.type) {
+    case 'apply':
+      {
+        return {
+          status: 1,
+          buttonText: '申請をキャンセル'
+        };
+      }
+
+    case 'cancel':
+      {
+        return {
+          status: 0,
+          buttonText: '申請する'
+        };
+      }
+
+    default:
+      {
+        throw new Error();
+      }
+  }
+};
+
+function SubscribeStatusButton() {
+  var element = document.getElementById('subscribe_status_button');
+  var party_id = Number(element.dataset.party);
+  var user_id = Number(element.dataset.user);
+
+  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_0__.useReducer)(statusReducer, initialState),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/subscribe/".concat(party_id, "/").concat(user_id)).then(function (response) {
+      console.log('どうだ' + response.data);
+      dispatch({
+        type: 'cancel'
+      });
+    })["catch"](function (response) {
+      return dispatch({
+        type: 'cancel'
+      });
+    });
+  }, []);
+
+  var submit = function submit() {
+    console.log(state.status);
+
+    if (state.status === 0) {
+      dispatch({
+        type: 'apply'
+      });
+    } else {
+      dispatch({
+        type: 'cancel'
+      });
+    }
+
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/subscribe/".concat(party_id, "/").concat(user_id, "/").concat(status)).then(function (response) {
+      return set;
+    });
+  };
+
+  var handleClickSubmit = function handleClickSubmit(e) {
+    e.preventDefault();
+
+    if (state.status === 0) {
+      dispatch({
+        type: 'apply'
+      });
+    } else if (state.status === 1 || state.status === 2) {
+      dispatch({
+        type: 'cancel'
+      });
+    } else {
+      dispatch({
+        type: 'cancel'
+      });
+    }
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+      className: "party-button edit",
+      onClick: handleClickSubmit,
+      status: state.status,
+      children: state.buttonText
+    })
+  });
+}
+
+if (document.getElementById('subscribe_status_button')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(SubscribeStatusButton, {}), document.getElementById('subscribe_status_button'));
 }
 
 /***/ }),
