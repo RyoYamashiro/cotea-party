@@ -2800,7 +2800,7 @@ var statusReducer = function statusReducer(state, action) {
       {
         return {
           status: 1,
-          buttonText: '申請をキャンセル'
+          buttonText: 'キャンセル'
         };
       }
 
@@ -2830,7 +2830,7 @@ function SubscribeStatusButton() {
       dispatch = _useReducer2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/subscribe/".concat(party_id, "/").concat(user_id)).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/parties/subscribes/".concat(party_id, "/").concat(user_id)).then(function (response) {
       console.log('どうだ' + response.data);
       dispatch({
         type: 'cancel'
@@ -2841,24 +2841,6 @@ function SubscribeStatusButton() {
       });
     });
   }, []);
-
-  var submit = function submit() {
-    console.log(state.status);
-
-    if (state.status === 0) {
-      dispatch({
-        type: 'apply'
-      });
-    } else {
-      dispatch({
-        type: 'cancel'
-      });
-    }
-
-    axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/subscribe/".concat(party_id, "/").concat(user_id, "/").concat(status)).then(function (response) {
-      return set;
-    });
-  };
 
   var handleClickSubmit = function handleClickSubmit(e) {
     e.preventDefault();
@@ -2876,6 +2858,12 @@ function SubscribeStatusButton() {
         type: 'cancel'
       });
     }
+
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/parties/subscribes/".concat(party_id, "/").concat(user_id, "/").concat(state.status)).then(function (response) {
+      return console.log('then');
+    })["catch"](function (response) {
+      return console.log(response);
+    });
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("form", {

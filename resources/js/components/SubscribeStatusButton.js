@@ -12,7 +12,7 @@ const statusReducer = (state, action) => {
     case 'apply': {
       return {
         status: 1,
-        buttonText: '申請をキャンセル'
+        buttonText: 'キャンセル'
       }
     }
     case 'cancel': {
@@ -33,7 +33,7 @@ export default function SubscribeStatusButton() {
   const [state, dispatch] = useReducer(statusReducer, initialState);
 
   useEffect(() => {
-    axios.get(`/api/subscribe/${party_id}/${user_id}`).
+    axios.get(`/api/parties/subscribes/${party_id}/${user_id}`).
         then(response => {
           console.log('どうだ'+response.data)
           dispatch({type: 'cancel'})
@@ -41,16 +41,6 @@ export default function SubscribeStatusButton() {
         .catch(response => dispatch({type: 'cancel'}));
   }, []);
 
-  const submit = () => {
-    console.log(state.status);
-    if(state.status === 0){
-      dispatch({type: 'apply'})
-    }else{
-      dispatch({type: 'cancel'});
-    }
-    axios.post(`/api/subscribe/${party_id}/${user_id}/${status}`).
-        then(response => set);
-  }
   const handleClickSubmit = (e) => {
     e.preventDefault();
     if(state.status === 0){
@@ -60,6 +50,9 @@ export default function SubscribeStatusButton() {
     }else{
       dispatch({type: 'cancel'});
     }
+    axios.post(`/api/parties/subscribes/${party_id}/${user_id}/${state.status}`)
+        .then(response => console.log('then'))
+        .catch(response => console.log(response))
   }
   return (
     <form>

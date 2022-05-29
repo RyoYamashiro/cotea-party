@@ -13,14 +13,14 @@ use App\Subscribe;
 
 class SubscribeController extends Controller
 {
-  public function index(int $id){
-    if(Auth::id() === Party::find($id)->user_id){
-      $query = Subscribe::query();
-      $query->where('party_id', $id)
-      $subscribes = $query->get();
-      return $subscribes;
-    }
-  }
+  //   public function index(int $id){
+  //   if(Auth::id() === Party::find($id)->user_id){
+  //     $query = Subscribe::query();
+  //     $query->where('party_id', $id)
+  //     $subscribes = $query->get();
+  //     return $subscribes;
+  //   }
+  // }
 
   public function show($party_id, $user_id)
   {
@@ -40,38 +40,30 @@ class SubscribeController extends Controller
 
     // そこからreact内でJSONのステータス情報をもとにボタンのスタイルと文字を生成
   }
-  public function store(Request $request)
+  public function update(Request $request)
   {
-    $party = Party::find($request->party_id);
-        $query = Subscribe::query();
-        $query->where('user_id',$request->user_id);
-        $query->where('party_id',$request->party_id);
-        $query->where('status',$request->status);
-        $data = $query->first();
-        if (!isset($data)) {
-            $data = new Subscribe();
-            $data->user_id = $request->user_id;
-            $data->party_id = $request->party_id;
-            $data->status = $request->status;
-        }
-        $data->message = $request->message;
-        $party_id = $data->party_id;
-        $user_id = $data->user_id;
-        $message = $data->message;
-        if ($request->status == 1) {
-            $data->save();
-            // return view('subscribes.store',compact('party','message','party_id','user_id'));
-        } else if ($request->status == 3) {
-            $query = Subscribe::query();
-            $query->where('party_id',$party_id);
-            $query->where('user_id',$user_id);
-            $query->where('status',2);
-            $subscribe = $query->first();
-            if (isset($subscribe)) {
-                $subscribe->status = 0;
-                $subscribe->save();
-            }
-            // return $this->index();
-        }
+    $party_id = intval($request->party_id);
+    $user_id = intval($request->user_id);
+    $status = intval($request->status);
+
+    $query = Subscribe::query();
+    $query->where('user_id',$user_id);
+    $query->where('party_id',$party_id);
+    $data = $query->first();
+    if(!isset($data)) {
+        $data = new Subscribe();
+        $data->user_id = $user_id;
+        $data->party_id = $party_id;
+        $data->status = $status;
+        $data->message = 'おはよう';
+        $data->save();
+    }else{
+      logger($status);
+      $data->status = $status;
+      logger($data);
+
+      $data->save();
+
+    }
   }
 }

@@ -31,7 +31,6 @@ class CreateSubscribesTable extends Migration
                 ->references('id')
                 ->on('users');
       });
-        });
     }
 
     /**

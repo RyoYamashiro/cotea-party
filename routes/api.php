@@ -13,5 +13,5 @@ use Illuminate\Http\Request;
 |
 */
 Route::get('/parties/{index}','API\PartiesController@index');
-Route::get('/parties/subscribes/{id}', 'API\SubscribeController@index');
-Route::get('/parties/subscribes/{party_id}/{user_name}', 'API\SubscribeController@show');
+Route::get('/parties/subscribes/{id}', 'API\SubscribeController@show');
+Route::post('/parties/subscribes/{party_id}/{user_id}/{status}', 'API\SubscribeController@update');
