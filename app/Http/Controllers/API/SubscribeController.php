@@ -24,17 +24,22 @@ class SubscribeController extends Controller
 
   public function show($party_id, $user_id)
   {
+    $party = Party::find($party_id);
     $query = Subscribe::query();
-
     $query->where('party_id', $party_id);
-    // Reactで生成したボタンから情報を得る
     $query->where('user_id', $user_id);
     $subscribe = $query->first();
-    if($subscribe){
-
+    if($party->user_id === intval($user_id)){
+      $isLoggedin = true;
     }else{
-      return null;
+      $isLoggedin = false;
+    }
 
+    if($subscribe){
+      return
+        array("subscribe" => $subscribe,"isLoggedin" => $isLoggedin);
+    }else{
+      return array("subscribe" => null,"isLoggedin" => $isLoggedin);
     }
 
 

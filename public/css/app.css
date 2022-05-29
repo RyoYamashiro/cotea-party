@@ -441,6 +441,7 @@ img {
   font-weight: bold;
 }
 .party-item-content {
+  margin-bottom: 40px;
   font-size: 22px;
 }
 .party-middle {

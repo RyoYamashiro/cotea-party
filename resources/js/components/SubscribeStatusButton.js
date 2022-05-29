@@ -21,6 +21,12 @@ const statusReducer = (state, action) => {
         buttonText: '申請する'
       }
     }
+    case 'loggedin': {
+      return {
+        status: 4,
+        buttonText: '申請者一覧'
+      }
+    }
     default: {
       throw new Error();
     }
@@ -35,8 +41,18 @@ export default function SubscribeStatusButton() {
   useEffect(() => {
     axios.get(`/api/parties/subscribes/${party_id}/${user_id}`).
         then(response => {
-          console.log('どうだ'+response.data)
-          dispatch({type: 'cancel'})
+          const subscribe = response.data.subscribe;
+          const isLoggedIn = response.data.isLoggedin;
+          console.log(response.data);
+          if(isLoggedIn === true){
+            dispatch({type: 'loggedin'});
+          }else{
+            if(subscribe.status === 0){
+              dispatch({type: 'apply'});
+            }else{
+              dispatch({type: 'cancel'});
+            }
+          }
         })
         .catch(response => dispatch({type: 'cancel'}));
   }, []);
@@ -47,6 +63,8 @@ export default function SubscribeStatusButton() {
       dispatch({type: 'apply'});
     }else if(state.status === 1 || state.status === 2){
       dispatch({type: 'cancel'});
+    }else if(state.status === 4){
+      console.log('一覧表示メソッド実行');
     }else{
       dispatch({type: 'cancel'});
     }

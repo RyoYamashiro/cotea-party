@@ -2812,6 +2812,14 @@ var statusReducer = function statusReducer(state, action) {
         };
       }
 
+    case 'loggedin':
+      {
+        return {
+          status: 4,
+          buttonText: '申請者一覧'
+        };
+      }
+
     default:
       {
         throw new Error();
@@ -2831,10 +2839,25 @@ function SubscribeStatusButton() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/parties/subscribes/".concat(party_id, "/").concat(user_id)).then(function (response) {
-      console.log('どうだ' + response.data);
-      dispatch({
-        type: 'cancel'
-      });
+      var subscribe = response.data.subscribe;
+      var isLoggedIn = response.data.isLoggedin;
+      console.log(response.data);
+
+      if (isLoggedIn === true) {
+        dispatch({
+          type: 'loggedin'
+        });
+      } else {
+        if (subscribe.status === 0) {
+          dispatch({
+            type: 'apply'
+          });
+        } else {
+          dispatch({
+            type: 'cancel'
+          });
+        }
+      }
     })["catch"](function (response) {
       return dispatch({
         type: 'cancel'
@@ -2853,6 +2876,8 @@ function SubscribeStatusButton() {
       dispatch({
         type: 'cancel'
       });
+    } else if (state.status === 4) {
+      console.log('一覧表示メソッド実行');
     } else {
       dispatch({
         type: 'cancel'
