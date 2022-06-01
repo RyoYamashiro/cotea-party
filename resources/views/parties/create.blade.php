@@ -14,6 +14,7 @@
             <h2 class="title">パーティー投稿作成</h2>
           </div>
           @include('parties.form')
+
           <div class="button-holder">
             <button class="form-button" type="submit">登録</button>
           </div>

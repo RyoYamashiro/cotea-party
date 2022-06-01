@@ -68,4 +68,5 @@ class PartiesController extends Controller
     {
         //
     }
+    
 }

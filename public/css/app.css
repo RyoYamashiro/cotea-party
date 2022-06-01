@@ -401,8 +401,21 @@ img {
   font-size: 38px;
   font-family: "Kaisei HarunoUmi", serif;
 }
+.party-status-badge {
+  color: #fcfeff;
+  padding: 15px;
+  border-radius: 15px;
+  transition: 0.3s;
+  font-size: 22px;
+  display: inline-block;
+  border: none;
+  background: #ebb97c;
+}
 .party-delete-button-holder {
   display: inline-block;
+}
+.party-username {
+  font-size: 30px;
 }
 .party-button {
   color: #fcfeff;
@@ -412,17 +425,13 @@ img {
   font-size: 22px;
   display: inline-block;
   border: none;
+  background: #5ebf71;
 }
 .party-button:hover {
+  background: #53b567;
   color: #fcfeff;
   transition: 0.3s;
   transform: translateY(-1px);
-}
-.party-button.edit {
-  background: #5ebf71;
-}
-.party-button.edit:hover {
-  background: #53b567;
 }
 .party-button.delete {
   background: #f77ea6;
@@ -507,6 +516,30 @@ img {
 }
 .paginate-link-active:hover {
   background: #f77ea6;
+}
+
+.subscribe-message-title {
+  color: #5ebf71;
+}
+.subscribe-button-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding: 5px 0;
+}
+.subscribe-index-button {
+  float: right;
+  background: #5ebf71;
+  color: #fcfeff;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  transition: 0.3s;
+}
+.subscribe-index-button:hover {
+  background: #53b567;
+  transition: 0.3s;
+  transform: translateY(-1px);
 }
 
 .footer {

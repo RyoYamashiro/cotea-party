@@ -14,7 +14,7 @@
         </div>
 
         <div class="party-top">
-          <h3 class="party-title">{{$party->title}}</h3>
+            <h3 class="party-title">{{$party->title}}</h3>
           <div class="party-button-holder">
             @if(Auth::id() === $party->user_id)
               <a class="party-button edit" href="{{route('parties.edit', compact('party'))}}">編集する</a>
@@ -23,6 +23,10 @@
                 @csrf
                 <button class="party-button delete" type="submit" name="button">削除する</button>
               </form>
+            @else
+              @isset($subscribe->status)
+              <span class="party-status-badge">{{$subscribe->getStatus()}}</span>
+              @endisset
             @endif
           </div>
 
@@ -56,7 +60,7 @@
             <div class="host-holder">
               <div class="party-item">
                 <p class="party-item-title">主催者</p>
-                <p class="party-item-content"><a href="{{route('users.show', $party->user->name)}}">{{$party->user->name}}</a></p>
+                <p class="party-item-content"><a class="party-username" href="{{route('users.show', $party->user->name)}}">{{$party->user->name}}</a></p>
               </div>
             </div>
             <div id="subscribe_status_button" data-user="{{auth()->user()->id}}" data-party="{{$party->id}}">

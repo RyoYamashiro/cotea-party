@@ -23,5 +23,5 @@ Route::prefix('users')->name('users.')->group(function () {
 Route::get('/password/edit', 'UserController@editPassword')->name('password.edit');
 Route::patch('/password/update', 'UserController@updatePassword')->name('password.change');
 
-
+Route::get('/api/parties/subscribe/index/{party_id}', 'PartyController@getSubscribeIndex');
 Route::get('/home', 'HomeController@index')->name('home');

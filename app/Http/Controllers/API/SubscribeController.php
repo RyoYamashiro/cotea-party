@@ -13,14 +13,7 @@ use App\Subscribe;
 
 class SubscribeController extends Controller
 {
-  //   public function index(int $id){
-  //   if(Auth::id() === Party::find($id)->user_id){
-  //     $query = Subscribe::query();
-  //     $query->where('party_id', $id)
-  //     $subscribes = $query->get();
-  //     return $subscribes;
-  //   }
-  // }
+
 
   public function show($party_id, $user_id)
   {
@@ -41,9 +34,6 @@ class SubscribeController extends Controller
     }else{
       return array("subscribe" => null,"isLoggedin" => $isLoggedin);
     }
-
-
-    // そこからreact内でJSONのステータス情報をもとにボタンのスタイルと文字を生成
   }
   public function update(Request $request)
   {
@@ -63,9 +53,7 @@ class SubscribeController extends Controller
         $data->message = 'おはよう';
         $data->save();
     }else{
-      logger($status);
       $data->status = $status;
-      logger($data);
 
       $data->save();
 

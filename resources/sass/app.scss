@@ -467,10 +467,22 @@ img {
     font-size: $font-size_3l;
     font-family: $font-family_theme;
   }
-
+  &-status-badge{
+    color: $main-color;
+    padding: $space_l;
+    border-radius: $space_l;
+    transition: .3s;
+    font-size: $font-size_xl;
+    display: inline-block;
+    border: none;
+    background: $base-color;
+  }
   &-delete-button-holder{
     display: inline-block;
 
+  }
+  &-username{
+    font-size: $font-size_xxl;
   }
   &-button{
     color: $main-color;
@@ -480,17 +492,15 @@ img {
     font-size: $font-size_xl;
     display: inline-block;
     border: none;
+    background: $sub-color;
     &:hover{
+      background: #53b567;
+
       color: $main-color;
       transition: .3s;
       transform: translateY(-1px);
     }
-    &.edit{
-      background: $sub-color;
-      &:hover{
-        background: #53b567;
-      }
-    }
+
     &.delete{
       background: $accent-color;
       border: none;
@@ -578,9 +588,38 @@ img {
       }
     }
   }
-
-
 }
+
+
+.subscribe{
+  &-message-title{
+    color: $sub-color;
+  }
+  &-button-wrapper{
+    overflow: hidden;
+    width: 100%;
+    padding: $space_s 0;
+  }
+  &-index-button{
+    float: right;
+    background: $sub-color;
+    color: $main-color;
+    font-size: $font-size_l;
+    padding: $space_s;
+    border-radius: $space_s;
+    border: none;
+    transition: .3s;
+
+    &:hover{
+      background: #53b567;
+      transition: .3s;
+      transform: translateY(-1px);
+    }
+  }
+}
+
+
+
 
 .footer {
   position: absolute;
