@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Party;
+use App\User;
 use App\Subscribe;
 
 use App\Http\Requests\PartyRequest;
@@ -20,7 +21,6 @@ class PartyController extends Controller
   }
   public function index()
   {
-
     $totalPageNumber = Party::all()->count();
     $partyPageNumber = ceil($totalPageNumber/ 12);
     return view('parties.index', compact('partyPageNumber'));
@@ -101,4 +101,8 @@ class PartyController extends Controller
       return $subscribes;
     }
   }
+
+
+
+
 }

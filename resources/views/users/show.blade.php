@@ -93,29 +93,9 @@
         @endif
       </section>
 
-      <section class="section">
-        <div class="title-wrapper">
-          <h2 class="title">投稿済パーティー</h2>
-        </div>
-        <div class="article-wrapper">
-        </div>
-      </section>
+      <div id="user_article_list" data-user="{{auth()->id()}}">
+      </div>
 
-      <section class="section">
-        <div class="title-wrapper">
-          <h2 class="title">参加予定パーティー</h2>
-        </div>
-        <div class="article-wrapper">
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="title-wrapper">
-          <h2 class="title">申請中パーティー</h2>
-        </div>
-        <div class="article-wrapper">
-        </div>
-      </section>
 
     </div>
   </main>

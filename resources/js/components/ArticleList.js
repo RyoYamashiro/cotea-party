@@ -17,18 +17,18 @@ function ArticleList() {
     }, [currentPage]);
 
 
-      const element = document.getElementById('article_list');
-      const totalPaginationButtonNumber = Number(element.dataset.partyPageNumber);
-
+    const element = document.getElementById('article_list');
+    const totalPaginationButtonNumber = Number(element.dataset.partyPageNumber);
     const handlePaginate = (selectedPage) => {
       const page = selectedPage.selected;
       setCurrentPage(page);
     }
     return (
       <>
-        {articles.map((article, index) => (
-          <Article key={index} data={article} />
-        ))}
+
+          {articles.map((article, index) => (
+            <Article key={index} data={article} />
+          ))}
         <ReactPaginate
            forcePage={currentPage}
 

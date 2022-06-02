@@ -179,6 +179,7 @@ img {
   margin-bottom: 30px;
   background: #fcfeff;
   border-radius: 30px;
+  float: left;
 }
 .article::before {
   content: "";
@@ -242,6 +243,8 @@ img {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  overflow: hidden;
+  width: 100%;
 }
 
 .form {

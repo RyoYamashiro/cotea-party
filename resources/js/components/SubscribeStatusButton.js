@@ -88,9 +88,7 @@ export default function SubscribeStatusButton() {
     setOpen(true)
     axios.get(`/api/parties/subscribe/index/${party_id}`)
         .then(response => {
-          console.log(response.data);
           setData(response.data);
-          console.log(data);
         });
   };
   const handleClose = () => setOpen(false);

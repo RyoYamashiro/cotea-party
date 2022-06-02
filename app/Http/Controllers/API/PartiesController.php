@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Party;
+use App\User;
+use App\Subscribe;
+
 
 class PartiesController extends Controller
 {
@@ -19,10 +22,19 @@ class PartiesController extends Controller
       $parties = Party::orderBy('created_at', 'DESC')->offset($index*12)->take(12)->get();
       return $parties;
     }
-    public function getPostedParties($index)
+    public function getUserParties(User $user)
     {
-      $parties = Party::where('user_id', auth()->id())->orderBy('created_at', 'DESC')->offset($index*3)->take(3)->get();
-      return $parties;
+      $postedParties = Party::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+
+      $joinParties = Subscribe::join('parties', 'subscribes.party_id', '=', 'parties.id')->where('subscribes.user_id', $user->id)->orderBy('parties.created_at', 'DESC')->where('subscribes.status', '=', 2)->get();
+
+      $applyParties = Subscribe::join('parties', 'subscribes.party_id', '=', 'parties.id')->where('subscribes.user_id', $user->id)->orderBy('parties.created_at', 'DESC')->where('subscribes.status', '=', 1)->get();
+
+      return [
+        'postedParties' => $postedParties,
+        'joinParties' => $joinParties,
+        'applyParties' => $applyParties
+      ];
     }
     /**
      * Store a newly created resource in storage.
@@ -68,5 +80,5 @@ class PartiesController extends Controller
     {
         //
     }
-    
+
 }
