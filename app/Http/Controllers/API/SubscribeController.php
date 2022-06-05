@@ -35,28 +35,19 @@ class SubscribeController extends Controller
       return array("subscribe" => null,"isLoggedin" => $isLoggedin);
     }
   }
-  public function update(Request $request)
+  public function update($party_id, $user_id, $status)
   {
-    $party_id = intval($request->party_id);
-    $user_id = intval($request->user_id);
-    $status = intval($request->status);
+    $party_id = intval($party_id);
+    $user_id = intval($user_id);
+    $status = intval($status);
 
     $query = Subscribe::query();
     $query->where('user_id',$user_id);
     $query->where('party_id',$party_id);
     $data = $query->first();
-    if(!isset($data)) {
-        $data = new Subscribe();
-        $data->user_id = $user_id;
-        $data->party_id = $party_id;
-        $data->status = $status;
-        $data->message = 'おはよう';
-        $data->save();
-    }else{
-      $data->status = $status;
+    $data->status = $status;
 
-      $data->save();
+    $data->save();
 
-    }
   }
 }

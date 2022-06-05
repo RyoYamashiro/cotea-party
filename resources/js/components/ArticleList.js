@@ -13,7 +13,8 @@ function ArticleList() {
 
     useEffect(() => {
     axios.get(`/api/parties/${currentPage}`).
-          then(response => setArticles(response.data));
+          then(response => setArticles(response.data)).
+          catch(response => console.log(response));
     }, [currentPage]);
 
 
@@ -25,29 +26,29 @@ function ArticleList() {
     }
     return (
       <>
+        {articles.map((article, index) => (
+          <Article key={index} data={article} />
+        ))}
+        <div className="pagination-wrapper">
+          <ReactPaginate
+             forcePage={currentPage}
 
-          {articles.map((article, index) => (
-            <Article key={index} data={article} />
-          ))}
-        <ReactPaginate
-           forcePage={currentPage}
-
-           nextLabel="＞"
-           onPageChange={handlePaginate}
-           pageCount={totalPaginationButtonNumber}
-           pageRangeDisplayed={2}
-           marginPagesDisplayed={2}
-           previousLabel="＜"
-           renderOnZeroPageCount={null}
-           containerClassName="paginate"
-           pageLinkClassName="paginate-link"
-           activeClassName="pagenate-item-active"
-           activeLinkClassName="paginate-link-active"
-           breakLinkClassName="paginate-link"
-           previousLinkClassName="paginate-link"
-           nextLinkClassName="paginate-link"
-         />
-
+             nextLabel="＞"
+             onPageChange={handlePaginate}
+             pageCount={totalPaginationButtonNumber}
+             pageRangeDisplayed={2}
+             marginPagesDisplayed={2}
+             previousLabel="＜"
+             renderOnZeroPageCount={null}
+             containerClassName="paginate"
+             pageLinkClassName="paginate-link"
+             activeClassName="pagenate-item-active"
+             activeLinkClassName="paginate-link-active"
+             breakLinkClassName="paginate-link"
+             previousLinkClassName="paginate-link"
+             nextLinkClassName="paginate-link"
+           />
+       </div>
       </>
     );
 }

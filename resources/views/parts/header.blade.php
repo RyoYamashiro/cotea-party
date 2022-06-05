@@ -1,8 +1,3 @@
-@if(session('flash_message'))
-  <div class="flash_message">
-    {{session('flash_message')}}
-  </div>
-@endif
 <header class="header">
   <h1 class="header-logo"><a href="{{route('parties.index')}}">コーティー<br>パーティー</a></h1>
   <nav class="nav-menu">
@@ -41,6 +36,4 @@
       @endauth
     </ul>
   </nav>
-
-
 </header>

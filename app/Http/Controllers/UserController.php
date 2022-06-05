@@ -47,7 +47,7 @@ class UserController extends Controller
     $user->self_introduction = $request->self_introduction;
 
     $user->save();
-    return redirect()->route('users.show', $user->name);
+    return redirect()->route('users.show', $user->name)->with('flash_message', 'ユーザー情報を更新しました。');
   }
 
 
@@ -57,11 +57,11 @@ class UserController extends Controller
   }
 
   protected function validator(array $data)
-    {
-        return Validator::make($data,[
-            'new_password' => 'required|string|min:6|confirmed',
-            ]);
-    }
+  {
+      return Validator::make($data,[
+          'new_password' => 'required|string|min:6|confirmed',
+          ]);
+  }
   public function updatePassword(Request $request)
   {
     $user = Auth::user();

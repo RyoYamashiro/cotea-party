@@ -10,6 +10,7 @@ use App\Http\Requests\PartyRequest;
 use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
@@ -19,9 +20,15 @@ class PartyController extends Controller
   {
     $this->authorizeResource(Party::class, 'party');
   }
+  protected function validator(array $data)
+  {
+      return Validator::make($data,[
+          'message' => 'max:20',
+          ]);
+  }
   public function index()
   {
-    $totalPageNumber = Party::all()->count();
+    $totalPageNumber = Party::all()->load(['user'])->count();
     $partyPageNumber = ceil($totalPageNumber/ 12);
     return view('parties.index', compact('partyPageNumber'));
   }
@@ -40,26 +47,9 @@ class PartyController extends Controller
     $party->shopname = $request->shopname;
     $party->content = $request->content;
     $party->user_id = $request->user()->id;
-    if ($request->func == 1) {
-      $data->save();
-    }else if ($request->func == 2){
-      $query = Subscribe::query();
-      $query->where('job_id',$data->id);
-      $query->where('status','<>',1);
-      if ($query->count() == 0) {
-          $query = Subscribe::query();
-          $query->where('job_id',$data->id);
-          $query->where('user_id',$request->user_id);
-          $query->where('status',1);
-          $subscribes = $query->first();
-          if (isset($subscribes)) {
-              //決定する人が特定できた時
-              $subscribes->status = 2;
-              $subscribes->save();
-          }
-      }
-    }
-    return redirect()->route('parties.index');
+
+
+    return redirect()->route('parties.index')->with('flash_message','パーティーを登録しました。');
   }
   public function edit(Party $party)
   {
@@ -78,7 +68,7 @@ class PartyController extends Controller
     $party->content = $request->content;
 
     $party->save();
-    return redirect()->route('parties.index');
+    return redirect()->route('parties.index')->with('flash_message','パーティーを更新しました。');;
   }
   public function show(Party $party)
   {
@@ -101,8 +91,33 @@ class PartyController extends Controller
       return $subscribes;
     }
   }
+  public function updateSubscribe(Request $request)
+  {
+    $party_id = intval($request->party_id);
+    $user_id = intval($request->user_id);
+    $status = intval($request->status);
+    $query = Subscribe::query();
+    $query->where('user_id',$user_id);
+    $query->where('party_id',$party_id);
+    $data = $query->first();
+    $flash_message = '申請しました。';
+    if(!isset($data)) {
+      $data = new Subscribe();
+      $this->validator($request->all())->validate();
+      $data->user_id = $user_id;
+      $data->party_id = $party_id;
+      $data->status = $status;
+      $data->message = $request->message;
+      $data->save();
+    }else{
+      $request->message ? $data->message = $request->message: $data->message = '';
+      $data->status = $status;
+      $data->save();
+      if($status === 0){
+        $flash_message = '申請取り消ししました。';
+      }
 
-
-
-
+    }
+    return redirect()->route('parties.show', Party::find($party_id)->id)->with('flash_message', $flash_message);
+  }
 }

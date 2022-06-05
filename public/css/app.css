@@ -67,8 +67,6 @@ img {
   width: 100%;
   background: #5ebf71;
   padding: 5px;
-  position: absolute;
-  top: 84px;
   text-align: center;
   font-size: 18px;
 }
@@ -242,7 +240,6 @@ img {
   margin-right: -30px;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   overflow: hidden;
   width: 100%;
 }
@@ -337,6 +334,9 @@ img {
   transition: 0.3s;
   background: #53b567;
   transform: translateY(-1px);
+}
+.form.subscribe-form {
+  width: 100%;
 }
 
 .profile-table {
@@ -496,13 +496,17 @@ img {
   float: right;
 }
 
-.paginate {
+.pagination-wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+.pagination-wrapper .paginate {
   display: flex;
+  width: 600px;
   justify-content: space-between;
-  min-width: 600px;
   margin: 20px auto 40px;
 }
-.paginate-link {
+.pagination-wrapper .paginate-link {
   background: #5ebf71;
   padding: 15px 20px;
   font-weight: bold;
@@ -510,14 +514,14 @@ img {
   font-size: 22px;
   color: #fcfeff;
 }
-.paginate-link:hover {
+.pagination-wrapper .paginate-link:hover {
   color: #fcfeff;
   background: #53b567;
 }
-.paginate-link-active {
+.pagination-wrapper .paginate-link-active {
   background: #f77ea6;
 }
-.paginate-link-active:hover {
+.pagination-wrapper .paginate-link-active:hover {
   background: #f77ea6;
 }
 

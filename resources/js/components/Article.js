@@ -22,8 +22,6 @@ function Article({data}) {
   const handleApiLoaded = (obj) => {
     setMap(obj.map);
     setMaps(obj.maps);
-    console.log('map' ,map);
-    console.log('maps' ,maps);
     setMarker(new obj.maps.Marker({
       map: obj.map,
       position: latLng,

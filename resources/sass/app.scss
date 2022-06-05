@@ -102,12 +102,11 @@ img {
     height: 100%;
   }
 }
+
 .flash_message{
   width: 100%;
   background: $sub-color;
   padding: $space_s;
-  position: absolute;
-  top:84px;
   text-align: center;
   font-size: $font-size_l;
 }
@@ -280,7 +279,6 @@ img {
     margin-right: -$space_xxl;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     overflow: hidden;
     width: 100%;
 
@@ -399,6 +397,10 @@ img {
       background: #53b567;
       transform: translateY(-1px);
     }
+  }
+
+  &.subscribe-form{
+    width: 100%;
   }
 }
 
@@ -569,32 +571,34 @@ img {
   }
 
 }
-
-.paginate{
-  display: flex;
-  justify-content: space-between;
-  min-width: 600px;
-  margin: $space_xl auto $space_3l;
-  &-link{
-    background: $sub-color;
-    padding: $space_l $space_xl;
-    font-weight: bold;
-    border-radius: $space_xxl;
-    font-size: $font-size_xl;
-    color: $main-color;
-    &:hover{
+.pagination-wrapper{
+  margin: 0 auto;
+  width: 100%;
+  .paginate{
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+    margin: $space_xl auto $space_3l;
+    &-link{
+      background: $sub-color;
+      padding: $space_l $space_xl;
+      font-weight: bold;
+      border-radius: $space_xxl;
+      font-size: $font-size_xl;
       color: $main-color;
-      background: #53b567;
-    }
-    &-active{
-      background: $accent-color;
       &:hover{
+        color: $main-color;
+        background: #53b567;
+      }
+      &-active{
         background: $accent-color;
+        &:hover{
+          background: $accent-color;
+        }
       }
     }
   }
 }
-
 
 .subscribe{
   &-message-title{
@@ -622,8 +626,6 @@ img {
     }
   }
 }
-
-
 
 
 .footer {

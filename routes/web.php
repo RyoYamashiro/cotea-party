@@ -12,16 +12,16 @@
 */
 Auth::routes();
 Route::get('/', 'PartyController@index')->name('parties.index');
-Route::resource('/parties', 'PartyController')->except(['index', 'show'])->middleware('auth');
-Route::resource('/parties', 'PartyController')->only(['show']);
+Route::resource('/parties', 'PartyController')->except(['index'])->middleware('auth');
 
-Route::prefix('users')->name('users.')->group(function () {
+Route::prefix('users')->name('users.')->middleware('auth')->group(function () {
     Route::get('/{name}', 'UserController@show')->name('show');
     Route::get('/{name}/edit', 'UserController@edit')->name('edit');
     Route::patch('/{name}', 'UserController@update')->name('update');
 });
+Route::post('/parties/subscribes/', 'PartyController@updateSubscribe');
+
 Route::get('/password/edit', 'UserController@editPassword')->name('password.edit');
 Route::patch('/password/update', 'UserController@updatePassword')->name('password.change');
 
-Route::get('/api/parties/subscribe/index/{party_id}', 'PartyController@getSubscribeIndex');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/api/parties/subscribe/index/{party_id}', 'PartyController@getSubscribeIndex')->middleware('auth');

@@ -6,7 +6,7 @@
 
 <div class="wrapper">
   @include('parts.header')
-
+  
   <main class="main">
       <div class="container">
         <form class="form" action="{{ route('parties.store') }}" method="post">

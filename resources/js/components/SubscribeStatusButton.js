@@ -13,6 +13,8 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
+let csrf_token = document.head.querySelector('meta[name="csrf-token"]').content;
+
 const initialState = {
   status: 0,
   buttonText: '申請する',
@@ -23,24 +25,18 @@ const statusReducer = (state, action) => {
     case 'cancel': {
       return {
         status: 0,
-        buttonText: '申請する',
-        buttonDeleteStyle: false
+        buttonText: '参加キャンセル',
+        buttonDeleteStyle: true
       }
     }
     case 'apply': {
       return {
         status: 1,
-        buttonText: '参加キャンセル',
-        buttonDeleteStyle: true
+        buttonText: '申請する',
+        buttonDeleteStyle: false
       }
     }
-    case 'join': {
-      return {
-        status: 2,
-        buttonText: '参加キャンセル',
-        buttonDeleteStyle: true
-      }
-    }
+
     case 'loggedin': {
       return {
         status: 4,
@@ -85,11 +81,13 @@ export default function SubscribeStatusButton() {
   const [open, setOpen] = useState(false);
   const [data,setData] = useState([]);
   const handleOpen = () => {
-    setOpen(true)
-    axios.get(`/api/parties/subscribe/index/${party_id}`)
-        .then(response => {
-          setData(response.data);
-        });
+    if(state.status === 4){
+      axios.get(`/api/parties/subscribe/index/${party_id}`)
+          .then(response => {
+            setData(response.data);
+          });
+    }
+    setOpen(true);
   };
   const handleClose = () => setOpen(false);
 
@@ -111,29 +109,11 @@ export default function SubscribeStatusButton() {
             }else{
               dispatch({type: 'apply'});
             }
-            console.log(state.status);
           }
         })
-        .catch(response => dispatch({type: 'cancel'}));
+        .catch(response => dispatch({type: 'apply'}));
   }, []);
 
-  const handleClickSubmit = (e) => {
-    e.preventDefault();
-    if(state.status === 1 || state.status === 2){
-      dispatch({type: 'cancel'});
-    }else if(state.status === 0){
-      dispatch({type: 'apply'});
-    }else if(state.status === 4){
-      handleOpen();
-      return;
-    }else{
-      dispatch({type: 'cancel'});
-    }
-    postStatus(party_id, user_id, state.status);
-
-    console.log(state.status);
-    return;
-  }
   const postStatus = (party_id, user_id, status) => {
     axios.post(`/api/parties/subscribes/${party_id}/${user_id}/${status}`)
         .then(response => console.log('then'))
@@ -141,21 +121,29 @@ export default function SubscribeStatusButton() {
   }
   const clickAcceptJoin = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+
     postStatus(party_id, e.target.value, 2);
   }
-  return (
-    <>
-      <form>
-        <button className={classNameButton} onClick={handleClickSubmit} value={state.status}>{state.buttonText}</button>
-      </form>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalStyle}>
+
+
+  function ModalView(props){
+    if(props.status === 1){
+      return (
+        <>
+          <div className="input-holder">
+            <p className="form-label">申請メッセージ</p>
+            <input className="form-input" type="text" name="message" />
+          </div>
+
+          <input type="hidden" name="status" value="1" />
+          <div className="button-holder">
+            <input type="submit" className="form-button" value="申請する" />
+          </div>
+        </>
+      );
+    }else if(props.status === 4){
+      return (
+        <>
           <div className="title-wrapper">
             <h2 className="title">パーティー一覧</h2>
           </div>
@@ -181,6 +169,33 @@ export default function SubscribeStatusButton() {
               </AccordionDetails>
             </Accordion>
           ))}
+        </>
+      );
+    }else{
+      return (
+        <>
+          <input type="hidden" name="status" value="0" />
+          <button className="subscribe-index-button">申請取消</button>
+        </>
+      );
+    }
+  }
+  return (
+    <>
+      <button className={classNameButton} onClick={handleOpen} value={status}>{state.buttonText}</button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <form action="/parties/subscribes/" method="post" className="form subscribe-form">
+            <ModalView status={state.status} />
+            <input type="hidden" name="user_id" value={user_id} />
+            <input type="hidden" name="party_id" value={party_id} />
+            <input type="hidden" name="_token" value={csrf_token} />
+          </form>
         </Box>
       </Modal>
     </>

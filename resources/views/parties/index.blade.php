@@ -7,6 +7,12 @@
 <div class="wrapper">
   @include('parts.header')
   <main class="main">
+
+    @if(session('flash_message'))
+      <div class="flash_message">
+        {{session('flash_message')}}
+      </div>
+    @endif
     <div class="container">
       <div class="info">
         ・こちらのサービスはあんなかんな、こんなどんなであります。<br>

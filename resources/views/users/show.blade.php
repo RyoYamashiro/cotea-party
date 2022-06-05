@@ -6,6 +6,11 @@
 <div class="wrapper">
   @include('parts.header')
   <main class="main">
+    @if(session('flash_message'))
+      <div class="flash_message">
+        {{session('flash_message')}}
+      </div>
+    @endif
     <div class="container">
       <div class="title-wrapper">
         <h2 class="title">プロフィール</h2>
@@ -93,7 +98,7 @@
         @endif
       </section>
 
-      <div id="user_article_list" data-user="{{auth()->id()}}">
+      <div id="user_article_list" data-user="{{$user->id}}">
       </div>
 
 
