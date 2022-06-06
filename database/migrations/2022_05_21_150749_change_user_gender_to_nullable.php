@@ -14,7 +14,7 @@ class ChangeUserGenderToNullable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          DB::statement('alter table users modify column gender tinyint null');
+          DB::statement('alter table users alter column gender tinyint null');
 
         });
     }
@@ -27,7 +27,7 @@ class ChangeUserGenderToNullable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-          DB::statement('alter table users modify column gender tinyint not null');
+          DB::statement('alter table users alter column gender tinyint not null');
         });
     }
 }
