@@ -19,7 +19,7 @@ class CreatePartiesTable extends Migration
             $table->dateTime('date', $precision = 0);
             $table->string('address');
             $table->decimal('lat', 11, 8)->nullable();
-            $table->decimal('lng', 11, 8)->nullable();;
+            $table->decimal('lng', 11, 8)->nullable();
 
             $table->string('shopname');
             $table->text('content');
