@@ -94,9 +94,9 @@ class PartyController extends Controller
   public function updateSubscribe(Request $request)
   {
 
-    $party_id = $request->party_id;
-    $user_id = $request->user_id;
-    $status = $request->status;
+    $party_id = intval($request->party_id);
+    $user_id = intval($request->user_id);
+    $status = intval($request->status);
     $query = Subscribe::query();
     $query->where('user_id', $user_id);
     $query->where('party_id', $party_id);

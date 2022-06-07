@@ -13,6 +13,8 @@ class CreateSubscribesTable extends Migration
      */
     public function up()
     {
+      Schema::dropIfExists('subscribes');
+      
         Schema::create('subscribes', function (Blueprint $table) {
           $table->bigIncrements('id');
           $table->unsignedBigInteger('party_id');
