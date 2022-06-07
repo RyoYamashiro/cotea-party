@@ -47,7 +47,7 @@ class PartyController extends Controller
     $party->shopname = $request->shopname;
     $party->content = $request->content;
     $party->user_id = $request->user()->id;
-
+    $party->save();
 
     return redirect()->route('parties.index')->with('flash_message','パーティーを登録しました。');
   }
