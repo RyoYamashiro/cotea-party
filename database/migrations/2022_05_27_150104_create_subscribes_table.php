@@ -21,12 +21,8 @@ class CreateSubscribesTable extends Migration
           $table->longText('message');
           $table->timestamps();
 
-          $table->index( 'party_id' );
           $table->index( 'user_id' );
 
-          $table->foreign('party_id')
-                ->references('id')
-                ->on('parties');
           $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
