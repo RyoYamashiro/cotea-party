@@ -13,12 +13,10 @@ class CreateSubscribesTable extends Migration
      */
     public function up()
     {
-      Schema::dropIfExists('subscribes');
-      
         Schema::create('subscribes', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->unsignedBigInteger('party_id');
-          $table->unsignedBigInteger('user_id');
+          $table->bigInteger('party_id');
+          $table->bigInteger('user_id');
           $table->integer('status');
           $table->string('message');
           $table->timestamps();
