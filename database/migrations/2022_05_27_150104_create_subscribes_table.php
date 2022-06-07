@@ -18,7 +18,7 @@ class CreateSubscribesTable extends Migration
           $table->unsignedBigInteger('party_id');
           $table->unsignedBigInteger('user_id');
           $table->integer('status');
-          $table->longText('message');
+          $table->string('message');
           $table->timestamps();
 
           $table->index( 'user_id' );
