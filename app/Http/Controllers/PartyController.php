@@ -93,7 +93,6 @@ class PartyController extends Controller
   }
   public function updateSubscribe(Request $request)
   {
-    $this->validator($request->all())->validate();
 
     $party_id = intval($request->party_id);
     $user_id = intval($request->user_id);
