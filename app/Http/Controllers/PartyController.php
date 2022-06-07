@@ -93,6 +93,8 @@ class PartyController extends Controller
   }
   public function updateSubscribe(Request $request)
   {
+    $this->validator($request->all())->validate();
+
     $party_id = intval($request->party_id);
     $user_id = intval($request->user_id);
     $status = intval($request->status);
@@ -103,7 +105,6 @@ class PartyController extends Controller
     $flash_message = '申請しました。';
     if(!isset($data)) {
       $data = new Subscribe();
-      $this->validator($request->all())->validate();
       $data->user_id = $user_id;
       $data->party_id = $party_id;
       $data->status = $status;
@@ -118,6 +119,6 @@ class PartyController extends Controller
       }
 
     }
-    return redirect()->route('parties.show', Party::find($party_id)->id)->with('flash_message', $flash_message);
+    return redirect()->route('parties.show', $party_id)->with('flash_message', $flash_message);
   }
 }
