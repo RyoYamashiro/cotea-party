@@ -97,10 +97,6 @@ class PartyController extends Controller
     $party_id = intval($request->party_id);
     $user_id = intval($request->user_id);
     $status = intval($request->status);
-    $query = Subscribe::query();
-    $query->where('user_id', $user_id);
-    $query->where('party_id', $party_id);
-    $data = $query->first();
     $flash_message = '申請しました。';
     if(!isset($data)) {
       $data = new Subscribe();

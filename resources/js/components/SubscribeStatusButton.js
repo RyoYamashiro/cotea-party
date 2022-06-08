@@ -190,7 +190,7 @@ export default function SubscribeStatusButton() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-          <form action="/parties/subscribes/" method="post" className="form subscribe-form">
+          <form action="/parties/subscribes" method="post" className="form subscribe-form">
             <ModalView status={state.status} />
             <input type="hidden" name="user_id" value={user_id} />
             <input type="hidden" name="party_id" value={party_id} />
