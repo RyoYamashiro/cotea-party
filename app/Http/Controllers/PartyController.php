@@ -94,22 +94,23 @@ class PartyController extends Controller
   public function updateSubscribe(Request $request)
   {
 
-    $party_id = intval($request->party_id);
-    $user_id = intval($request->user_id);
-    $status = intval($request->status);
+    $query = Subscribe::query();
+    $query->where('user_id', $request->user_id);
+    $query->where('party_id', $request->party_id);
+    $data = $query->first();
     $flash_message = '申請しました。';
     if(!isset($data)) {
       $data = new Subscribe();
-      $data->user_id = $user_id;
-      $data->party_id = $party_id;
-      $data->status = $status;
+      $data->user_id = $request->user_id;
+      $data->party_id = $request->party_id;
+      $data->status = $request->status;
       $data->message = $request->message;
       $data->save();
     }else{
       $request->message ? $data->message = $request->message: $data->message = '';
-      $data->status = $status;
+      $data->status = $request->status;
       $data->save();
-      if($status === 0){
+      if($request->status === 0){
         $flash_message = '申請取り消ししました。';
       }
 
