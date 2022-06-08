@@ -115,6 +115,6 @@ class PartyController extends Controller
       }
 
     }
-    return redirect()->route('parties.show', $party_id)->with('flash_message', $flash_message);
+    return redirect()->route('parties.show', $request->party_id)->with('flash_message', $flash_message);
   }
 }
